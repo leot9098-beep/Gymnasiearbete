@@ -1,0 +1,27 @@
+body{
+    
+}
+a{
+    text-decoration: none;
+    border: black 1px solid;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:rgb(190, 189, 189) ;
+    color: blue;
+}
+.egg{
+    border: black 2px solid;
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align: center;
+    margin: 200px auto;
+    max-width: 540px;
+    
+}
+#menyimg{
+    background-image: url("https://media1.tenor.com/m/43mez44dcIQAAAAC/skeletons-running-around-a-christmas-tree-skeletons.gif");
+  height: 400px;
+  width: 500px;
+  background-size: cover;
+  margin: 0px auto;
+}
