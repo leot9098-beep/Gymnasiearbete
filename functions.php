@@ -1,22 +1,22 @@
 <?php
 
-require_once 'config/db.php';
+require_once 'db.php';
 
-function insertForumpost($message, $localuser, $userid)
+function insertpost($message, $localuser, $userid)
 {
     global $forum;
 
-    $sql = "INSERT INTO forum
-            (message, localuser, uid)
+    $sql = "INSERT INTO Imageboard
+            (message, ip, uid)
             VALUES (:msg, :ip, :uid)";
 
-    $roll = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ' OOOY DOCTOOOOSSSS!!!!', ' or something.', ' o algo.', ' grrrrr.', ' shit jari cares about.', ' slop.', ' döda integram.', ' fugging leo...', ' how could you tell.', ' 67 tuff.', ' jag är en vivaldi traiso wompa btw.', ' jag är trans btw.',);
-    $messageroll = $roll[array_rand($roll)];
+    //$roll = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ' OOOY DOCTOOOOSSSS!!!!', ' or something.', ' o algo.', ' grrrrr.', ' shit jari cares about.', ' slop.', ' döda integram.', ' fugging leo...', ' how could you tell.', ' 67 tuff.', ' jag är en vivaldi traiso wompa btw.', ' jag är trans btw.',);
+    //$messageroll = $roll[array_rand($roll)];
 
     try {
         $stmt = $forum->prepare($sql);
 
-        $stmt->bindValue(':msg', $message . $messageroll);
+        $stmt->bindValue(':msg', $message/* . $messageroll*/);
         $stmt->bindValue(':ip', $localuser);
         $stmt->bindValue(':uid', $userid);
 
@@ -40,7 +40,7 @@ function getUserID()
     }
 
     $stmt = $forum->prepare(
-        "SELECT uid FROM user WHERE username = :username LIMIT 1"
+        "SELECT uid FROM users WHERE username = :username LIMIT 1"
     );
 
     $stmt->execute([':username' => $username]);
@@ -55,7 +55,7 @@ function getUserIDAlt($username)
     global $forum;
 
     $stmt = $forum->prepare(
-        "SELECT uid FROM user WHERE username = :username LIMIT 1"
+        "SELECT uid FROM users WHERE username = :username LIMIT 1"
     );
 
     $stmt->execute([':username' => $username]);
@@ -69,7 +69,7 @@ function getUserIDAlt($username)
 function getForumPosts()
 {
 
-    $sql = "SELECT forum.message, forum.time, forum.uid, `user`.username FROM forum LEFT JOIN `user` ON forum.uid = `user`.uid ORDER BY forum.time DESC";
+    $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `users`.username FROM Imageboard LEFT JOIN `users` ON Imageboard.uid = `users`.uid ORDER BY Imageboard.time DESC";
 
     global $forum;
     $stmt = $forum->prepare($sql);
@@ -82,9 +82,9 @@ function login($username, $password)
     global $forum;
     $userid = getUserIDAlt($username);
     $hashed_password = getPass($userid);
-    $sql = "SELECT * FROM `user`
+    $sql = "SELECT * FROM `users`
         WHERE username = :username
-        AND password = :password";
+        AND password_hash = :password";
     $stmt = $forum->prepare($sql);
     $stmt->bindValue(':username', $username);
     $stmt->bindValue(':password', $hashed_password);
@@ -102,28 +102,27 @@ function getPass($userid)
     global $forum;
 
     $stmt = $forum->prepare(
-        "SELECT password FROM user WHERE uid = :uid LIMIT 1"
+        "SELECT password_hash FROM users WHERE uid = :uid LIMIT 1"
     );
 
     $stmt->execute([':uid' => $userid]);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $user ? $user['password'] : null;
+    return $user ? $user['password_hash'] : null;
 }
 
-function addUser($username, $name, $hashed_password, $localuser)
+function addUser($username, $hashed_password, $localuser)
 {
     global $forum;
 
-    $sql = "INSERT INTO `user`
-            (username, name, password, localuser)
-            VALUES (:username, :name, :password, :localuser)";
+    $sql = "INSERT INTO `users`
+            (username, password_hash, ip)
+            VALUES (:username, :password, :localuser)";
 
     $stmt = $forum->prepare($sql);
 
     $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':name', $name);
     $stmt->bindValue(':password', $hashed_password);
     $stmt->bindValue(':localuser', $localuser);
 
@@ -134,17 +133,16 @@ function addUser($username, $name, $hashed_password, $localuser)
     }
 }
 
-function updateUser($username, $name, $hashed_password, $localuser, $uid)
+function updateUser($username, $hashed_password, $localuser, $uid)
 {
 
     global $forum;
-    $sql = "UPDATE `user` SET username = :username, name = :name, password = :password, localuser = :localuser WHERE uid = :uid";
+    $sql = "UPDATE `users` SET username = :username, password_hash = :password, ip = :localuser WHERE uid = :uid";
 
 
     $stmt = $forum->prepare($sql);
 
     $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':name', $name);
     $stmt->bindValue(':password', $hashed_password);
     $stmt->bindValue(':localuser', $localuser);
     $stmt->bindValue(':uid', $uid);
@@ -160,7 +158,7 @@ function updatePostcount($userid)
 {
     global $forum;
 
-    $sql = "UPDATE `user`
+    $sql = "UPDATE `users`
             SET postcount = COALESCE(postcount, 0) + 1
             WHERE uid = :uid";
 
@@ -173,7 +171,7 @@ function updatePostcount($userid)
 
 function getuserinfo($userid)
 {
-    $sql = "select * from user where uid = :uid";
+    $sql = "select * from users where uid = :uid";
 
     global $forum;
     $stmt = $forum->prepare($sql);
@@ -186,7 +184,7 @@ function searchUserPost($search)
 {
     global $forum;
 
-    $sql = "SELECT forum.message, forum.time, forum.uid, `user`.username FROM forum LEFT JOIN `user` ON forum.uid = `user`.uid WHERE message LIKE :search ORDER BY forum.time DESC";
+    $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `users`.username FROM Imageboard LEFT JOIN `users` ON Imageboard.uid = `users`.uid WHERE message LIKE :search ORDER BY Imageboard.time DESC";
 
     $stmt = $forum->prepare($sql);
     $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
@@ -199,7 +197,7 @@ function searchUserPostByID($search)
 {
     global $forum;
 
-    $sql = "SELECT forum.message, forum.time, forum.uid, `user`.username FROM forum LEFT JOIN `user` ON forum.uid = `user`.uid WHERE forum.uid = :uid ORDER BY forum.time DESC";
+    $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `users`.username FROM Imageboard LEFT JOIN `users` ON Imageboard.uid = `users`.uid WHERE Imageboard.uid = :uid ORDER BY Imageboard.time DESC";
 
 
     $stmt = $forum->prepare($sql);
