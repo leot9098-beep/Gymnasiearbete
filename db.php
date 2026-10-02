@@ -1,8 +1,8 @@
 <?php
 $hostname_forumtest = "localhost";
-$database_forumtest = "forum";
-$username_forumtest = "forum";
-$password_forumtest = "foruminator123";
+$database_forumtest = "BookOfWhos";
+$username_forumtest = "BookOfWhos";
+$password_forumtest = "Whoasked11223344";
 
 
 try {
