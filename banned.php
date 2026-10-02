@@ -24,29 +24,7 @@ echo "<h1>You are probably not bannad. We haven't added that feature yet.</h1>";
 </style>
 
 <body>
-    <div class="nav"><a href="logout.php">[Log Out]</a><a href="index.php">[Return]</a></div>
-    <?php
-    $mango = $_SESSION['username'];
-    $uid = getUserID();
-    echo "<h1>$mango</h1>";
-    echo "<h1>user id is $uid</h1>";
-    if ($error) {
-        echo "<p>error</p>";
-    }
-    ?>
-    <form method="post" action="">
-        <p>Ändra profil: </p>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required value="<?php echo $user['username']; ?>">
-        <br>
-        <label for="name">Name:</label>
-        <input type="name" id="name" name="name" required value="<?php echo $user['name']; ?>">
-        <br>
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required value="">
-        <br>
-        <input type="submit" name="submit" value="Ändra">
-    </form>
+
 </body>
 
 </html>
