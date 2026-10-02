@@ -2,46 +2,7 @@
 session_start();
 require_once 'functions.php';
 require_once 'sessioncheck.php';
-$userid = getUserID();
-$user = getuserinfo($userid);
-$error = false;
-if (isset($_POST['submit'])) {
-    if (
-        isset($_POST['username'])
-        && isset($_POST['name'])
-        && isset($_POST['password'])
-    ) {
-        $username = filter_input(
-            INPUT_POST,
-            "username",
-            FILTER_SANITIZE_FULL_SPECIAL_CHARS
-        );
-        $password = filter_input(
-            INPUT_POST,
-            "password",
-            FILTER_SANITIZE_FULL_SPECIAL_CHARS
-        );
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        $_SESSION['username'] = $username;
-        $validUser = array('uid' => $userid, 'username' => $username);
-        $localuser = $_SERVER['REMOTE_ADDR'];
-
-        if ($username != "" && $password != "") {
-            // print_r($validUser);
-            if (updateUser($username, $hashed_password, $localuser, $userid)) {
-                header("Location: profile.php");
-            } else {
-                $error = true;
-            }
-        } else {
-            echo "You must enter a username, and password.";
-        }
-    } else {
-        $error = true;
-    }
-}
-
+echo "<h1>You are probably not bannad. We haven't added that feature yet.</h1>";
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +38,9 @@ if (isset($_POST['submit'])) {
         <p>Ändra profil: </p>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required value="<?php echo $user['username']; ?>">
+        <br>
+        <label for="name">Name:</label>
+        <input type="name" id="name" name="name" required value="<?php echo $user['name']; ?>">
         <br>
         <label for="password">Password:</label>
         <input type="text" id="password" name="password" required value="">
