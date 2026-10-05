@@ -54,15 +54,14 @@ if (isset($_POST['submit'])) {
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<style>
-    <?php
-    $Images = array('30.png', '28.png', '32.png', '34.webp', '22.png');
-    $BOTD =  "http://192.168.49.187/~adminator/PHP/Images/" . $Images[array_rand($Images)];
-    echo 'body{background-image: url("' . "$BOTD" . '");}';
-    ?>
-</style>
-
 <body>
+    <style>
+        <?php
+        $Images = array('30.png', '28.png', '32.png', '34.webp', '22.png');
+        $BOTD =  "http://192.168.49.187/~adminator/PHP/Images/" . $Images[array_rand($Images)];
+        echo 'body{background-image: url("' . "$BOTD" . '");}';
+        ?>
+    </style>
     <div class="nav"><a href="logout.php">[Log Out]</a><a href="index.php">[Return]</a></div>
     <?php
     $mango = $_SESSION['username'];
