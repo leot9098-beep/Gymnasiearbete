@@ -1,5 +1,5 @@
 <?php
-require_once 'assets/functions.php';
+require_once 'functions.php';
 session_start();
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];

@@ -1,5 +1,5 @@
 <?php
-require_once 'assets/functions.php';
+require_once 'functions.php';
 session_start();
 //$error=false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
