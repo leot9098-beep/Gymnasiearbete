@@ -1,4 +1,11 @@
-body{background-color: rgb(58, 58, 58);}
+body{/*background-color: rgb(58, 58, 58);*/
+background-image: url("assets/MSM-07S.JPG.webp");
+animation: moveIt 10s linear infinite;
+}
+
+@keyframes moveIt{
+    from{background-position: top;} to {background-position: bottom;}
+}
 
 .omgdiva{
     border: black 2px solid;
