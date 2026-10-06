@@ -33,6 +33,10 @@
                 <a class="flexnav" href="members.php"> <img src="assets/search.png"></img>
                     <span>Members</span></a>
             </div>
+            <div class="quicknav">
+                <a class="flexnav" href="rules.php"> <img src="assets/search.png"></img>
+                    <span>Rules</span></a>
+            </div>
         </div>
 
         <form class="Searcharea">
