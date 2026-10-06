@@ -12,7 +12,7 @@
     <div class="omgdiva">
         <div class="logosign"><a href="login.php">Login</a><a href="signup.php">SignUp</a></div>
         
-       <a href="index.php"><img src="assets/title.png" alt="" width="500" ></a> 
+       <a href="index.php"><img src="assets/Book of whos - Title.png" alt="" width="500" ></a> 
        <div class="menu">
         <a href="gallery.php"> Gallery</a>
         <a href="upload.php"> Upload</a> 
