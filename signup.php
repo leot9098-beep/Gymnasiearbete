@@ -1,15 +1,15 @@
 <?php
-require_once 'assets/functions.php';
+require_once 'functions.php';
 session_start();
 //$error=false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $localuser = $_SERVER['REMOTE_ADDR'];
+    $ip = $_SERVER['REMOTE_ADDR'];
 
     if ($username != "" && $password != "") {
-        if (addUser($username, $hashed_password, $localuser)) {
+        if (addUser($username, $hashed_password, $ip)) {
             $_SESSION['username'] = $username;
 
             header('Location: index.php');
@@ -32,15 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<style>
-    <?php
-    $Images = array('30.png', '28.png', '32.png', '34.webp', '22.png');
-    $BOTD =  "http://192.168.49.187/~adminator/PHP/Images/" . $Images[array_rand($Images)];
-    echo 'body{background-image: url("' . "$BOTD" . '");}';
-    ?>
-</style>
+
 
 <body>
+    <style>
+        <?php
+        $Images = array('30.png', '28.png', '32.png', '34.webp', '22.png');
+        $BOTD =  "http://192.168.49.187/~adminator/PHP/Images/" . $Images[array_rand($Images)];
+        echo 'body{background-image: url("' . "$BOTD" . '");}';
+        ?>
+    </style>
     <div class="nav">
         <span>Har redan ett konto?</span><a href="login.php">[Log In]</a>
     </div>
