@@ -2,6 +2,7 @@ body{
     background-size: 640px 360px;
     background-image: url("assets/BooksDarkMode.png");
     animation: BGScroll 6s linear infinite;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes BGScroll {
@@ -9,37 +10,33 @@ body{
     to { background-position: 0px 360px; }
 }
 
-.omgdiva{
-    border: black 2px solid;
-    border-radius: 20px;
+.Bigmenu{
+    border: rgb(100, 100, 100) 1px solid;
     margin: 200px auto;
     justify-content: center;
     align-items: center;
     max-width: 540px;
     text-align: center;
     padding: 30px;
-    background-color: rgba(90, 90, 90, 0.644);
+    background-color: rgba(29, 29, 29, 0.644);
+}
+.menu{
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+}
+.menu a{
+    color: white;
+    text-decoration:underline;
+    padding: 10px;
+    
+}
+.menu a:hover{
+    background-color: rgba(0,0,0,0.5);
+    
 }
 
-.menu a{
-    gap: 10px;
-    color: white;
-    text-decoration: none;
-    border: black 1px solid;
-    padding: 2px;
-    background-color: rgb(126, 126, 126);
-    
-}
-.logosign a{
-    
-    gap: 10px;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    border: black 1px solid;
-    padding: 2px;
-    background-color: rgb(126, 126, 126);
-}
+
 .Searcharea {
     color: white;
     margin: 10px ;
@@ -69,3 +66,31 @@ body{
   background-repeat: no-repeat;
 }
 
+.quicknav{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.quicknav :hover{
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.flexnav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 10px;
+
+}
+.flexnav span{
+    color: white;
+    font-size: 14px;
+}
+
+.flexrow{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
