@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'assets/functions.php';
+require_once 'functions.php';
+require_once 'sessioncheck.php';
 $userid = getUserID();
 $user = getuserinfo($userid);
 $error = false;
@@ -15,11 +16,6 @@ if (isset($_POST['submit'])) {
             "username",
             FILTER_SANITIZE_FULL_SPECIAL_CHARS
         );
-        $name = filter_input(
-            INPUT_POST,
-            "name",
-            FILTER_SANITIZE_FULL_SPECIAL_CHARS
-        );
         $password = filter_input(
             INPUT_POST,
             "password",
@@ -28,19 +24,18 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $_SESSION['username'] = $username;
-        $_SESSION['name'] = $name;
-        $validUser = array('uid' => $userid, 'username' => $username, 'name' => $name);
+        $validUser = array('uid' => $userid, 'username' => $username);
         $localuser = $_SERVER['REMOTE_ADDR'];
 
-        if ($username != "" && $name != "" && $password != "") {
+        if ($username != "" && $password != "") {
             // print_r($validUser);
-            if (updateUser($username, $name, $hashed_password, $localuser, $userid)) {
+            if (updateUser($username, $hashed_password, $localuser, $userid)) {
                 header("Location: profile.php");
             } else {
                 $error = true;
             }
         } else {
-            echo "Du måste mata in username, name och password";
+            echo "You must enter a username, and password.";
         }
     } else {
         $error = true;
@@ -56,7 +51,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link href="css/silver.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <style>
@@ -82,9 +77,6 @@ if (isset($_POST['submit'])) {
         <p>Ändra profil: </p>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required value="<?php echo $user['username']; ?>">
-        <br>
-        <label for="name">Name:</label>
-        <input type="name" id="name" name="name" required value="<?php echo $user['name']; ?>">
         <br>
         <label for="password">Password:</label>
         <input type="text" id="password" name="password" required value="">
