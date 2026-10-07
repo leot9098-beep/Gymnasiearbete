@@ -17,16 +17,16 @@
         <div class="flexrow">
             <div class="quicknav">
                 <a class="flexnav" href="gallery.php">
-                    <img src="assets/search.png"></img>
+                    <img src="assets/Gallery.png"></img>
                     <span>Gallery</span>
                 </a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="upload.php"> <img src="assets/search.png"></img>
+                <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
                     <span>Upload</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="forum.php"> <img src="assets/search.png"></img>
+                <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
                     <span>Forum</span></a>
             </div>
             <div class="quicknav">
@@ -34,7 +34,7 @@
                     <span>Members</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="rules.php"> <img src="assets/search.png"></img>
+                <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
                     <span>Rules</span></a>
             </div>
         </div>
