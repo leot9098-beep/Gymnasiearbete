@@ -30,7 +30,7 @@
                     <span>Forum</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="members.php"> <img src="assets/search.png"></img>
+                <a class="flexnav" href="members.php"> <img src="assets/Members.png"></img>
                     <span>Members</span></a>
             </div>
         </div>
