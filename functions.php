@@ -204,3 +204,85 @@ function searchUserPostByID($search)
 
     return $stmt;
 }
+
+function isBanned($uid)
+{
+    global $db;
+    $sql = "SELECT banneduntil FROM `Users`
+        WHERE uid = :uid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':uid', $uid);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $banneduntil = $result['banneduntil'];
+        if ($banneduntil !== null && strtotime($banneduntil) > time()) {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
+function getBanReason($uid)
+{
+    global $db;
+    $sql = "SELECT banreason FROM `Users`
+        WHERE uid = :uid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':uid', $uid);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['banreason'];
+    } else {
+        return null;
+    }
+}
+
+function getBanExpiry($uid)
+{
+    global $db;
+    $sql = "SELECT banneduntil FROM `Users`
+        WHERE uid = :uid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':uid', $uid);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['banneduntil'];
+    } else {
+        return null;
+    }
+}
+
+function getStoredUserIP($uid)
+{
+    global $db;
+    $sql = "SELECT ip FROM `Users`
+        WHERE uid = :uid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':uid', $uid);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['ip'];
+    } else {
+        return null;
+    }
+}
+
+function banUser($uid, $reason, $expiry)
+{
+    global $db;
+    $sql = "UPDATE `Users` SET banreason = :reason, banneduntil = :expiry WHERE uid = :uid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reason', $reason);
+    $stmt->bindValue(':expiry', $expiry);
+    $stmt->bindValue(':uid', $uid);
+    return $stmt->execute();
+}
