@@ -4,7 +4,7 @@
 
     if (!$upload || $upload['error'] !== UPLOAD_ERR_OK) {
         http_response_code(400);
-        exit('Upload failed.');
+        exit('Upload egg.');
     }
 
     if (!is_uploaded_file($upload['tmp_name'])) {
