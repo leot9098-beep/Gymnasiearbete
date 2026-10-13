@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <title>Super Mario Vs Call of Duty</title>
+    <title>Upload An Image</title>
 </head>
 
 <body>
 
-    <form action="uploadphoto.php" method="post"
-        enctype="multipart/form-data">
+    <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
-            <label for="Imgupload">upload an image here</label>
-            <input type="file" id="Imgupload" name="Imgupload" accept="image/jpeg , image/png, image/gif, image/webp">
+            <label for="image">upload an image here</label>
+            <input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp">
             <input type="submit" name="submit" value="Send">
         </div>
-
-
     </form>
 </body>
 
