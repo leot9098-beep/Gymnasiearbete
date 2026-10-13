@@ -12,12 +12,13 @@
 
     <form action="uploadphoto.php" method="post"
         enctype="multipart/form-data">
-        <fieldset>
-            <label for="image">upload an image:</label>
-            <input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp">
-        </fieldset>
+        <div class="Bigmenu">
+            <label for="Imgupload">upload an image here</label>
+            <input type="file" id="Imgupload" name="Imgupload" accept="image/jpeg , image/png, image/gif, image/webp">
+            <input type="submit" name="submit" value="Send">
+        </div>
 
-        <input type="submit" name="submit" value="Send">
+
     </form>
 </body>
 
