@@ -117,3 +117,11 @@ body{
 #Imgupload{
     color: rgb(85, 206, 14);
 }
+.flexnav label{
+    border: rgb(100, 100, 100) 1px solid;
+    padding: 10px;
+    color: white;
+}
+.flexnav :hover{
+    background-color:rgba(0, 0, 0, 0.5);
+}
