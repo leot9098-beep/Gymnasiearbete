@@ -13,12 +13,13 @@
 
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
-            <div class="flexnav" id="bigzone">
-                <label for="image"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
-                    <img src="assets/Upload.png" width="300px"> hello</img></label>
+            <div class="quicknav" id="bigzone">
+                <label for="image" style="border: rgb(100, 100, 100) 1px solid; padding: 80px"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
+                    <img src="assets/Upload.png"> </img> <br>
+                    <span style="font-size: 20px; font-weight:bold">Upload a image here</span> <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
+                </label>
 
-
-            </div> <input type="submit" name="submit" value="Send">
+            </div> <input type="submit" class="flexbutton" name="submit" value="Send">
             <ul id="filelist"></ul>
         </div>
     </form>
