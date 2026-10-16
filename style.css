@@ -76,7 +76,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.quicknav :hover{
+.quicknav:hover{
     background-color:rgba(0, 0, 0, 0.5);
 }
 
@@ -126,6 +126,38 @@ body{
     padding: 10px;
     color: white;
 }
-.flexnav :hover{
-    background-color:rgba(0, 0, 0, 0.5);
+
+.flexbutton{
+    border: rgb(100, 100, 100) 1px solid; 
+    padding: 4px;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    cursor:pointer;
+}
+.flexbutton:hover{
+    background-color: rgb(66, 66, 66);
+}
+
+#filelist{
+    padding: 0;
+    margin: 20px 0px 0px 0px;
+}
+
+#filelist li{
+    list-style: none;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container p{
+   padding: 0px 16px 0px 16px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 }
