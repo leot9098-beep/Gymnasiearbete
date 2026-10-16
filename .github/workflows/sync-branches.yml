@@ -1,8 +1,9 @@
-name: Sync Admin and LeoT into Main
+name: Sync Feature Branches to Main
 on:
   push:
     branches:
-      - main
+      - admin
+      - dev1
 
 permissions:
   contents: write
@@ -16,20 +17,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Merge Admin and LeoT into Main
+      - name: Merge triggered branch into Main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Ensure we are on main
+          # Get the name of the branch that triggered the push (admin or dev1)
+          TRIGGER_BRANCH=${GITHUB_REF#refs/heads/}
+          echo "Branch $TRIGGER_BRANCH was pushed. Merging into main..."
+          
+          # Switch to main
           git checkout main
           
-          # List of branches to merge into main
-          for branch in Admin LeoT; do
-            echo "Merging $branch into main..."
-            git fetch origin $branch
-            git merge origin/$branch --no-edit
-          done
+          # Merge the branch that triggered the event
+          git merge origin/$TRIGGER_BRANCH --no-edit
           
-          # Push the combined result back to main
+          # Push the updated main back to GitHub
           git push origin main
