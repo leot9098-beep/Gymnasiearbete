@@ -10,13 +10,10 @@ function insertpost($message, $localuser, $userid)
             (message, ip, uid)
             VALUES (:msg, :ip, :uid)";
 
-    //$roll = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ' OOOY DOCTOOOOSSSS!!!!', ' or something.', ' o algo.', ' grrrrr.', ' shit jari cares about.', ' slop.', ' döda integram.', ' fugging leo...', ' how could you tell.', ' 67 tuff.', ' jag är en vivaldi traiso wompa btw.', ' jag är trans btw.',);
-    //$messageroll = $roll[array_rand($roll)];
 
     try {
         $stmt = $db->prepare($sql);
-
-        $stmt->bindValue(':msg', $message/* . $messageroll*/);
+        $stmt->bindValue(':msg', $message);
         $stmt->bindValue(':ip', $localuser);
         $stmt->bindValue(':uid', $userid);
 
