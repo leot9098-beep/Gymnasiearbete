@@ -64,10 +64,13 @@ body{
     border-top: none;
     border-bottom: none;
     background-image: url("assets/search.png");
-    
+    cursor:pointer;
     background-position: center;
   padding: 10px 20px;
   background-repeat: no-repeat;
+}
+#search_button:hover{
+   background-color: rgb(91, 91, 91); 
 }
 
 .quicknav{
