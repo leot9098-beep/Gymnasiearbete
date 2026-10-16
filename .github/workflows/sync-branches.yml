@@ -2,8 +2,8 @@ name: Sync Feature Branches to Main
 on:
   push:
     branches:
-      - admin
-      - dev1
+      - Admin
+      - LeoT
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Get the name of the branch that triggered the push (admin or dev1)
+          # Get the name of the branch that triggered the push (Admin or LeoT)
           TRIGGER_BRANCH=${GITHUB_REF#refs/heads/}
           echo "Branch $TRIGGER_BRANCH was pushed. Merging into main..."
           
