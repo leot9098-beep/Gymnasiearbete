@@ -113,6 +113,10 @@ body{
     color: white;
     background-color: rgb(49, 49, 49);
     border: rgb(100, 100, 100) 1px solid;
+    cursor: pointer;
+}
+#Loginbutton:hover{
+    background-color: rgb(66, 66, 66);
 }
 #image{
     color: rgb(85, 206, 14);
