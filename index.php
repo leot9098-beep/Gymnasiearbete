@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <title>Main</title>
+    <title>Book of Whos - Main</title>
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
 

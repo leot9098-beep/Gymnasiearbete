@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <title>Rules</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <title>Book of Whos - Rules</title>
 </head>
 
 <body>
