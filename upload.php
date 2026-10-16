@@ -19,8 +19,9 @@
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span> <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
                 </label>
 
-            </div> <input type="submit" class="flexbutton" name="submit" value="Send">
+            </div>
             <ul id="filelist"></ul>
+            <input type="submit" class="flexbutton" name="submit" value="Upload">
         </div>
     </form>
 
@@ -57,11 +58,31 @@
 
         function showFiles(files) {
             fileList.replaceChildren();
-
+            //byt ut
             for (const file of files) {
                 const item = document.createElement("li");
-                item.textContent = `${file.name} (${Math.round(file.size / 1024)} KB)`;
-                fileList.append(item);
+                const div = document.createElement("div");
+                div.className = "container";
+                item.appendChild(div);
+
+
+                if (file.type.startsWith("image/")) {
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(file);
+                    img.alt = file.name;
+                    img.style.width = "150px";
+                    img.style.height = "auto";
+                    img.style.display = "block";
+                    img.style.marginBottom = "8px";
+
+                    div.appendChild(img);
+                }
+
+                const details = document.createElement("p");
+                details.textContent = `${file.name} (${Math.round(file.size / 1024)} KB)`;
+
+                div.appendChild(details);
+                fileList.append(div);
             }
         }
     </script>

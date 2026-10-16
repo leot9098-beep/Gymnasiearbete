@@ -136,3 +136,24 @@ body{
 .flexbutton:hover{
     background-color: rgb(66, 66, 66);
 }
+
+#filelist{
+    padding: 0;
+    margin: 20px 0px 0px 0px;
+}
+
+#filelist li{
+    list-style: none;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container p{
+   padding: 0px 16px 0px 16px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
