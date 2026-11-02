@@ -1,0 +1,6 @@
+db.php
+/uploads/*
+!/uploads/.gitkeep
+/avatars/*
+!/avatars/.gitkeep
+test.php

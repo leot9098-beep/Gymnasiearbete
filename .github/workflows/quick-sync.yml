@@ -1,0 +1,35 @@
+name: Sync Feature Branches to Main
+on:
+  push:
+    branches:
+      - Admin
+
+permissions:
+  contents: write
+
+jobs:
+  sync-to-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge triggered branch into Main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Get the name of the branch that triggered the push (Admin or LeoT)
+          TRIGGER_BRANCH=${GITHUB_REF#refs/heads/}
+          echo "Branch $TRIGGER_BRANCH was pushed. Merging into main..."
+          
+          # Switch to main
+          git checkout main
+          
+          # Merge the branch that triggered the event
+          git merge origin/$TRIGGER_BRANCH --no-edit
+          
+          # Push the updated main back to GitHub
+          git push origin main
