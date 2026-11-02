@@ -1,0 +1,79 @@
+<?php
+session_start();
+require_once 'functions.php';
+require_once 'sessioncheck.php';
+require_once 'bancheck.php';
+$uid = getUserID();
+$error = false;
+if (isset($_POST['submit'])) {
+    if (
+        isset($_POST['username'])
+        && isset($_POST['password'])
+    ) {
+        $username = filter_input(
+            INPUT_POST,
+            "username",
+            FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        );
+        $password = filter_input(
+            INPUT_POST,
+            "password",
+            FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        );
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $_SESSION['username'] = $username;
+        $validUser = array('uid' => $uid, 'username' => $username);
+        $localuser = $_SERVER['REMOTE_ADDR'];
+
+        if ($username != "" && $password != "") {
+            // print_r($validUser);
+            if (updateUser($username, $hashed_password, $localuser, $uid)) {
+                header("Location: profile.php");
+            } else {
+                $error = true;
+            }
+        } else {
+            echo "You must enter a username, and password.";
+        }
+    } else {
+        $error = true;
+    }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+</head>
+
+<body>
+    <div class="nav"><a href="logout.php">[Log Out]</a><a href="index.php">[Return]</a></div>
+    <?php
+    $uid = getUserID();
+    echo '<h1>' . $_SESSION['username'] . '</h1>';
+    echo "<h1>user id is $uid</h1>";
+    if ($error) {
+        echo "<p>error " . "$error" . "</p>";
+    }
+    ?>
+    <form method="post" action="">
+        <p>Modify profile: </p>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required value="<?php echo $_SESSION['username']; ?>">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required value="">
+        <br>
+        <input type="submit" name="submit" value="Change">
+    </form>
+</body>
+
+</html>
