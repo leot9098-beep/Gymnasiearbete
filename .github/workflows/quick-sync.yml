@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - Admin
+      - Leo
 
 permissions:
   contents: write
@@ -21,7 +22,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Get the name of the branch that triggered the push (Admin or LeoT)
+          # Get the name of the branch that triggered the push (Admin or Leo)
           TRIGGER_BRANCH=${GITHUB_REF#refs/heads/}
           echo "Branch $TRIGGER_BRANCH was pushed. Merging into main..."
           
