@@ -25,30 +25,26 @@
             </div>
             <ul id="filelist"></ul>
             <ul id="filelist"></ul>
-            <div id="uploaddetails">
+            <div id="uploaddetails" hidden>
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="vote for a map">
+                <input type="text" id="title" name="title" placeholder="Add a title...">
 
-
+                <br>
                 <label for="description">Description:</label>
-                <input id="desciption" name="description" placeholder="select a hero"></input>
+                <input id="desciption" name="description" placeholder="Add a description..."></input>
 
-
-                <label for="tag-input">Tags</label>
+                <br>
+                <label for="tag-input">Tags:</label>
 
                 <div id="tag-box">
                     <div id="tags"></div>
-                    <input
-                        id="tag-input"
-                        type="text"
-                        placeholder="Ban moira and ana"
-                        autocomplete="off">
+                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
                 </div>
 
 
                 <ul id="suggestions"></ul>
 
-                <input type="submit" class="appear" class="flexbutton" name="submit" value="Upload" hidden>
+                <input type="submit" class="appear" class="flexbutton" name="submit" value="Upload">
 
             </div>
             <script>
@@ -115,6 +111,7 @@
                 function showFiles(files) {
                     fileList.replaceChildren();
                     //byt ut
+                    uploaddetails.hidden = false;
                     for (const file of files) {
                         const item = document.createElement("li");
                         const div = document.createElement("div");
@@ -256,6 +253,7 @@
                     padding: 4px 8px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     margin: 2px;
+                    color: black;
                 }
 
                 .chip button {
@@ -276,6 +274,8 @@
                     text-align: left;
                     padding: 6px;
                 }
+
+                #uploaddetails {}
             </style>
 </body>
 
