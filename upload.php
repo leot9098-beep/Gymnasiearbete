@@ -40,13 +40,11 @@
                     <div id="tags"></div>
                     <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
                 </div>
-
-
                 <ul id="suggestions"></ul>
-
-                <input type="submit" class="appear" class="flexbutton" name="submit" value="Upload">
-
+                <input type="submit" class="flexbutton" name="submit" value="Upload">
             </div>
+
+
             <script>
                 /* const label = document.createElement("label");
                 label.htmlFor
@@ -178,7 +176,16 @@
 
                     const remove = document.createElement("button");
                     remove.type = "button";
-                    remove.textContent = "×";
+                    remove.textContent = "X";
+                    remove.style.fontWeight = "bold";
+                    remove.style.color = "white";
+                    remove.onmouseenter = () => {
+                        remove.style.color = "darkgray"
+                    }
+                    remove.onmouseleave = () => {
+                        remove.style.color = "white"
+                    }
+
                     remove.setAttribute("aria-label", `Remove ${tag}`);
                     remove.onclick = () => {
                         selectedTags.delete(tag);
@@ -239,6 +246,7 @@
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     padding: 8px 0px 8px 0px;
                     background: transparent;
+
                 }
 
                 #tag-input {
@@ -249,11 +257,12 @@
                 }
 
                 .chip {
-                    background: #eee;
+                    background: rgba(128, 128, 128, 0.5);
                     padding: 4px 8px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     margin: 2px;
-                    color: black;
+                    color: white;
+
                 }
 
                 .chip button {
@@ -275,7 +284,13 @@
                     padding: 6px;
                 }
 
-                #uploaddetails {}
+                #uploaddetails {
+                    text-align: left;
+                }
+
+                #uploaddetails button .flexbutton {
+                    display: flex;
+                }
             </style>
 </body>
 
