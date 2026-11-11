@@ -11,11 +11,10 @@
 
 
 <body>
-
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
             <div class="quicknav" id="bigzone">
-                <label for="image" style="border: rgb(100, 100, 100) 1px solid; padding: 80px"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
+                <label for="image" style="border: rgb(100, 100, 100) 1px solid; padding: 80px; width: 100%;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
                     <img src="assets/Upload.png"> </img> <br>
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                     <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
@@ -24,21 +23,23 @@
 
             </div>
             <ul id="filelist"></ul>
-            <ul id="filelist"></ul>
+
             <div id="uploaddetails" hidden>
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Add a title...">
+                <div id="tag-box">
+                    <input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                </div>
 
-                <br>
-                <label for="description">Description:</label>
-                <input id="desciption" name="description" placeholder="Add a description..."></input>
+                <div id="tag-box">
+                    <textarea id="desciption" name="description" placeholder="Add a description..." autocomplete="off"></textarea>
+                </div>
 
-                <br>
-                <label for="tag-input">Tags:</label>
+
 
                 <div id="tag-box">
                     <div id="tags"></div>
                     <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+                    </input>
+
                 </div>
                 <ul id="suggestions"></ul>
                 <input type="submit" class="flexbutton" name="submit" value="Upload">
@@ -206,14 +207,15 @@
                         tag.toLowerCase().includes(query) && !selectedTags.has(tag)
                     );
 
-                    for (const tag of matches) {
+                    for (let i = 0; i < Math.min(matches.length, 10); i++) {
                         const item = document.createElement("li");
                         const button = document.createElement("button");
                         button.type = "button";
-                        button.textContent = tag;
-                        button.onclick = () => addTag(tag);
+                        button.textContent = matches[i];
+                        button.onclick = () => addTag(matches[i]);
                         item.append(button);
                         suggestions.append(item);
+
                     }
 
                     suggestions.hidden = !query || matches.length === 0;
@@ -242,27 +244,41 @@
                 #tag-box {
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 6px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     padding: 8px 0px 8px 0px;
-                    background: transparent;
-
+                    background: rgba(75, 75, 75, 0.5);
+                    margin-bottom: 10px;
                 }
 
-                #tag-input {
+                #tag-input,
+                #desciption,
+                #title {
+                    display: flex;
+                    flex-wrap: wrap;
                     border: 0;
                     outline: 0;
                     flex: 1;
                     min-width: 140px;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: small;
+                }
+
+                textarea {
+                    field-sizing: content;
+                    resize: none;
+                    min-height: calc(1em +16px);
+                    max-height: calc(5em +16px);
+                    background: none;
+                    color: white;
                 }
 
                 .chip {
-                    background: rgba(128, 128, 128, 0.5);
+                    background: rgba(45, 45, 45, 0.5);
                     padding: 4px 8px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     margin: 2px;
                     color: white;
-
+                    display: inline-flex;
                 }
 
                 .chip button {
@@ -272,24 +288,38 @@
                 }
 
                 #suggestions {
+                    position: absolute;
                     list-style: none;
                     padding: 0;
                     margin: 4px 0;
+
+                }
+
+                #suggestions :hover {
+                    background-color: rgb(100, 100, 100);
                 }
 
                 #suggestions button {
                     display: block;
-                    width: 100%;
+                    min-width: 600px;
+
                     text-align: left;
                     padding: 6px;
+                    color: white;
+                    background: rgba(45, 45, 45);
+                    border: 1px solid rgba(100, 100, 100, 0.5);
+
                 }
 
                 #uploaddetails {
                     text-align: left;
                 }
 
-                #uploaddetails button .flexbutton {
-                    display: flex;
+                #uploaddetails input {
+                    background: none;
+                    color: white;
+
+                    width: 100%;
                 }
             </style>
 </body>
