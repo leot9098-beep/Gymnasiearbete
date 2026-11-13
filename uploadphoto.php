@@ -11,6 +11,9 @@
 
  <body>
      <?php
+        session_start();
+        require_once 'functions.php';
+        require_once 'bancheck.php';
         $upload = $_FILES['image'] ?? null;
         $uploadDir = __DIR__ . '/uploads/';
 
@@ -57,8 +60,8 @@
             exit('Invalid image or dimensions exceed the limit.');
         }
 
-        $filename = bin2hex(random_bytes(16)) . '.' . $allowed[$mime];
-
+        $filename = 'BookOfWho' . bin2hex(random_bytes(6)) . '.' . $allowed[$mime];
+        $filetype = $allowed[$mime];
 
         if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
             http_response_code(500);
@@ -77,7 +80,16 @@
             exit('Could not save the image.');
         }
 
-        echo 'Upload successful.';
+        $uid = getUserID();
+        echo '<p>Uploaded image: ' . htmlspecialchars($filename) . '</p>';
+        echo '<p>File type: ' . htmlspecialchars($filetype) . '</p>';
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $result = uploadToGallery($filename, $filetype, $ip, $uid);
+        if (!$result) {
+            echo 'Gallery insert failed.';
+        } else {
+            echo 'Upload successful.';
+        }
         ?>
  </body>
 

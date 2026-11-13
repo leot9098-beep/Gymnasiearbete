@@ -15,18 +15,18 @@ require_once 'bancheck.php';
 
 <body>
     <div class="indextopspace"></div>
-    <div class="Bigmenu">
+    <div class="Indexmenu">
         <div class="menu"><?php if (!isset($_SESSION['username'])) { ?>
                 <a href="login.php">Log in</a>
                 <a href="signup.php">Sign up</a>
             <?php } else { ?>
-                <a class="indexlink" href="logout.php">Log out</a>
                 <a class="indexlink" href="user.php?username=<?= $_SESSION['username'] ?>">Logged in as <?= $_SESSION['username'] ?><?= '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="32" height="32">' ?></a>
                 <a class="indexlink" href="profile.php">Modify User</a>
+                <a class="indexlink" href="logout.php">Log out</a>
             <?php } ?>
         </div>
 
-        <a href="index.php"><img src="assets/Book of whos - Title.png" alt="" width="500"></a>
+        <a href="index.php"><img class="titleimg" src="assets/Book of whos - Title.png" alt="Book of Whos"></a>
 
         <div class="flexrow">
             <div class="quicknav">

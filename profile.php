@@ -22,13 +22,14 @@ if (isset($_POST['submit'])) {
         );
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $_SESSION['username'] = $username;
+
         $validUser = array('uid' => $uid, 'username' => $username);
         $localuser = $_SERVER['REMOTE_ADDR'];
 
         if ($username != "" && $password != "") {
             // print_r($validUser);
             if (updateUser($username, $hashed_password, $localuser, $uid)) {
+                $_SESSION['username'] = $username;
                 header("Location: profile.php");
             } else {
                 $error = true;

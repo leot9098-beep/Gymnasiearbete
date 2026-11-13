@@ -99,29 +99,6 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Users`
---
-
-INSERT INTO `Users` (`uid`, `username`, `password_hash`, `ip`, `created_at`, `notes`, `permission`, `pfp`, `savedposts`, `savedimages`, `banneduntil`, `banreason`) VALUES
-(1, '1234', '$2y$12$v7yvss3U3MiLQ/Bf7gibgenpuIpjn19t9Tqzkb3ORh0Ssw3jb0nw.', '192.168.49.187', '2026-10-05 11:47:11', 'No Notes', 0, 'nopfp.png', NULL, NULL, '2026-10-22 00:00:00', 'Stupid mango plus leo diff.'),
-(2, 'chud', '$2y$12$5Y2qTi3KpRJilw7FGQhJgOkLlkZ0NG9rP9JXXKDsFXu1BVGm6NtzK', '192.168.49.187', '2026-10-05 11:47:20', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(3, 'sex', '$2y$12$qidQ.dD1VvyeqQ.iyW.ITuhKvMT6rGc7Vf3uS7QqzdS.GuPErcwhC', '192.168.49.103', '2026-10-06 10:57:46', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(4, '67', '$2y$12$YrSspSrpS8mHKa7AFo4NF.GHWhCOkyPvlPLxe91tcys52XnzV9b6q', '192.168.49.110', '2026-10-07 08:30:32', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(7, 'leoleoarp&aring;sig', '$2y$12$tmmQtL9vkvi7yl.8spDkSO/vpi01JFfpnUB4ouP05tKWTEB4v4LhK', '192.168.49.187', '2026-10-20 12:55:18', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(8, 'leoleoarpasig', '$2y$12$sl00.zrxwsF/rJtnKIzcm.O8J64oGV.A7of0JWoVZ6J5H1NHTn6Xm', '192.168.49.187', '2026-10-20 12:55:56', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(9, 'iiiuuu', '$2y$12$JVLuImF.9U4l1KUBo6YTEuthQ6FlKN2lqG5fYzkbw1DuI5lPmLc7O', '192.168.49.187', '2026-10-20 12:56:03', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(10, 'fffddd', '$2y$12$zdgDGx7cAFp0cv2hCmAJl.r0gSqJTFNa9.8WEwAwmxV.E00tr1XL.', '192.168.49.187', '2026-10-20 12:56:52', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(11, 'test', '$2y$12$5iD7uJrmpypKvwvuA6BPyegQ7l./P1zPwc78FCLSRu9K/8yMSTD.a', '192.168.49.187', '2026-10-20 12:59:42', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(13, 'ddssdd', '$2y$12$cPwDxliyk0d4lIvsiHA1Ze2nN5y96RVtYZtxr5eyJhTvFhhzm.HNK', '192.168.49.187', '2026-10-20 13:02:10', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(14, 'lklk', '$2y$12$7I9iwqA1sRY/wnrTpRHzF.cJzSBksFCLK/oLVVr6TNaiaJ4duOqPO', '192.168.49.187', '2026-10-20 13:04:49', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(15, 'asdasdsadasdsad', '$2y$12$AOy6/P1ej/z5RQuJt8YiUuFYR3269nPLYxtokS1v9qCZo1dk5tDkm', '192.168.49.187', '2026-10-20 13:07:54', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(16, 'durpeelingo', '$2y$12$J4fGvC3SwJtgHmSMKg7ZLOgn86PMiE8e1wH4Y/8YyQpek/4OY56Jm', '192.168.49.187', '2026-10-20 13:16:19', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(17, 'tuffington', '$2y$12$M3DywMN7gn6uCn/4WkKrOuimUfmp6llgFwypi1AVmM1zAfOqIZcNW', '192.168.49.187', '2026-10-21 08:06:09', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(18, 'man go', '$2y$12$EAV/Wp9d7cQK2nmMXD2fLeKQjqxcaty4KYXjJCcNXnK57bHCuCr8W', '192.168.49.187', '2026-10-23 12:43:16', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(19, '12345678901234567890', '$2y$12$NSE/4vjHcLHvzmRjbGOif.6QdCCvj6TPyELOYifwuOE5IcVk2DIta', '192.168.49.187', '2026-10-23 13:15:32', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned'),
-(20, '123456789012345678901234', '$2y$12$j5XmMV9nzJ2VsoEBb/d6FOupRDNujOiMiHwDnN4WAuCRhLeQViP/y', '192.168.49.187', '2026-10-23 13:21:29', 'No Notes', 0, 'nopfp.png', NULL, NULL, NULL, 'Not Banned');
-
---
 -- Indexes for dumped tables
 --
 
