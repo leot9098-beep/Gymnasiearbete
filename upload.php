@@ -11,11 +11,10 @@
 
 
 <body>
-
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
             <div class="quicknav" id="bigzone">
-                <label for="image" style="border: rgb(100, 100, 100) 1px solid; padding: 80px"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
+                <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
                     <img src="assets/Upload.png"> </img> <br>
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                     <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
@@ -221,7 +220,7 @@
                         addTag(taginput.value);
                     }
                 });
-
+                x
 
 
                 /*    </div>

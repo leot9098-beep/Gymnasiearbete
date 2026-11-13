@@ -32,18 +32,17 @@ function getUserID()
     $username = $_SESSION['username'] ?? null;
 
     if (!$username) {
-        return null;
+        return 24;
     }
 
     $stmt = $db->prepare(
-        "SELECT uid FROM Users WHERE username = :username LIMIT 1"
+        'SELECT uid FROM Users WHERE username = :username LIMIT 1'
     );
-
     $stmt->execute([':username' => $username]);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $user ? (int) $user['uid'] : null;
+    return $user ? (int) $user['uid'] : 24;
 }
 
 function getUserIDAlt($username)
@@ -58,13 +57,12 @@ function getUserIDAlt($username)
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $user ? (int) $user['uid'] : null;
+    return $user ? (int) $user['uid'] : 24;
 }
 
 
 function getForumPosts()
 {
-
     $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `Users`.username FROM Imageboard LEFT JOIN `Users` ON Imageboard.uid = `Users`.uid ORDER BY Imageboard.time DESC";
 
     global $db;
@@ -313,4 +311,69 @@ function getAvatar($uid)
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $user ? $user['pfp'] : null;
+}
+
+function uploadToGallery($filename, $filetype, $ip, $uid)
+{
+    global $db;
+
+    $sql = "INSERT INTO Gallery
+            (filetype, filename, pip, uid, related, upvoters, downvoters, reactions, tags)
+            VALUES (:filetype, :filename, :pip, :uid, :related, :upvoters, :downvoters, :reactions, :tags)";
+
+
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':filetype', $filetype);
+        $stmt->bindValue(':filename', $filename);
+        $stmt->bindValue(':pip', $ip);
+        $stmt->bindValue(':uid', $uid);
+        $stmt->bindValue(':related', json_encode([]));
+        $stmt->bindValue(':upvoters', json_encode([]));
+        $stmt->bindValue(':downvoters', json_encode([]));
+        $stmt->bindValue(':reactions', json_encode([]));
+        $stmt->bindValue(':tags', json_encode([]));
+
+        $stmt->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        die("Forum insert failed: " . $e->getMessage());
+    }
+}
+
+function getGalleryImages()
+{
+    $sql = "SELECT Gallery.pid, Gallery.filename, Gallery.description, Gallery.title, Gallery.time, Gallery.uid, `Users`.username FROM Gallery LEFT JOIN `Users` ON Gallery.uid = `Users`.uid ORDER BY Gallery.time DESC";
+
+    global $db;
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt;
+}
+
+function timeAgo(string $time): string
+{
+    $timestamp = strtotime($time);
+
+    if ($timestamp === false) {
+        return $time; // Fallback if the date is invalid
+    }
+
+    $seconds = max(0, time() - $timestamp);
+
+    if ($seconds < 60) {
+        return 'just now';
+    }
+    if ($seconds < 3600) {
+        $minutes = (int) floor($seconds / 60);
+        return $minutes . ' min' . ($minutes === 1 ? '' : 's') . ' ago';
+    }
+    if ($seconds < 86400) {
+        $hours = (int) floor($seconds / 3600);
+        return $hours . ' hour' . ($hours === 1 ? '' : 's') . ' ago';
+    }
+
+    $days = (int) floor($seconds / 86400);
+    return $days . ' day' . ($days === 1 ? '' : 's') . ' ago';
 }
