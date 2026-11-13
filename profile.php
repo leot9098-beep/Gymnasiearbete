@@ -55,7 +55,28 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <div class="nav"><a href="logout.php">[Log Out]</a><a href="index.php">[Return]</a></div>
+    <!--NAVBAR OCH TITEL-->
+    <div class="sidenavbar">
+        <div class="quicknav">
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+                <span>Upload</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+                <span>Forum</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+                <span>Gallery</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+                <span>Rules</span></a>
+        </div>
+    </div>
     <?php
     $uid = getUserID();
     echo '<h1>' . $_SESSION['username'] . '</h1>';
@@ -67,13 +88,19 @@ if (isset($_POST['submit'])) {
     <form method="post" action="">
         <p>Modify profile: </p>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required value="<?php echo $_SESSION['username']; ?>">
+        <input type="text" id="username" name="username" autocomplete="off" required value="<?php echo $_SESSION['username']; ?>">
         <br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required value="">
         <br>
         <input type="submit" name="submit" value="Change">
     </form>
+
+    <div class="nav"><a href="logout.php">[Log Out]</a>
+        <div class="nav"><a href="logout.php">[Delete Account]</a>
+
+
+
 </body>
 
 </html>

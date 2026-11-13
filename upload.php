@@ -11,6 +11,29 @@
 
 
 <body>
+    <!--NAVBAR OCH TITEL-->
+    <div class="sidenavbar">
+        <div class="quicknav">
+            <a class="flexnav" href="members.php"> <img src="assets/Members.png"></img>
+                <span>Members</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+                <span>Forum</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+                <span>Gallery</span></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+                <span>Rules</span></a>
+        </div>
+    </div>
+
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
             <div class="quicknav" id="bigzone">
