@@ -23,33 +23,29 @@
 
             </div>
             <ul id="filelist"></ul>
-            <ul id="filelist"></ul>
-            <div id="uploaddetails">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="vote for a map">
 
-
-                <label for="description">Description:</label>
-                <input id="desciption" name="description" placeholder="select a hero"></input>
-
-
-                <label for="tag-input">Tags</label>
+            <div id="uploaddetails" hidden>
+                <div id="tag-box">
+                    <input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                </div>
 
                 <div id="tag-box">
-                    <div id="tags"></div>
-                    <input
-                        id="tag-input"
-                        type="text"
-                        placeholder="Ban moira and ana"
-                        autocomplete="off">
+                    <textarea id="desciption" name="description" placeholder="Add a description..." autocomplete="off"></textarea>
                 </div>
 
 
+
+                <div id="tag-box">
+                    <div id="tags"></div>
+                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+                    </input>
+
+                </div>
                 <ul id="suggestions"></ul>
-
-                <input type="submit" class="appear" class="flexbutton" name="submit" value="Upload" hidden>
-
+                <input type="submit" class="flexbutton" name="submit" value="Upload">
             </div>
+
+
             <script>
                 /* const label = document.createElement("label");
                 label.htmlFor
@@ -114,6 +110,7 @@
                 function showFiles(files) {
                     fileList.replaceChildren();
                     //byt ut
+                    uploaddetails.hidden = false;
                     for (const file of files) {
                         const item = document.createElement("li");
                         const div = document.createElement("div");
@@ -180,7 +177,16 @@
 
                     const remove = document.createElement("button");
                     remove.type = "button";
-                    remove.textContent = "×";
+                    remove.textContent = "X";
+                    remove.style.fontWeight = "bold";
+                    remove.style.color = "white";
+                    remove.onmouseenter = () => {
+                        remove.style.color = "darkgray"
+                    }
+                    remove.onmouseleave = () => {
+                        remove.style.color = "white"
+                    }
+
                     remove.setAttribute("aria-label", `Remove ${tag}`);
                     remove.onclick = () => {
                         selectedTags.delete(tag);
@@ -201,14 +207,15 @@
                         tag.toLowerCase().includes(query) && !selectedTags.has(tag)
                     );
 
-                    for (const tag of matches) {
+                    for (let i = 0; i < Math.min(matches.length, 10); i++) {
                         const item = document.createElement("li");
                         const button = document.createElement("button");
                         button.type = "button";
-                        button.textContent = tag;
-                        button.onclick = () => addTag(tag);
+                        button.textContent = matches[i];
+                        button.onclick = () => addTag(matches[i]);
                         item.append(button);
                         suggestions.append(item);
+
                     }
 
                     suggestions.hidden = !query || matches.length === 0;
@@ -237,24 +244,41 @@
                 #tag-box {
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 6px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     padding: 8px 0px 8px 0px;
-                    background: transparent;
+                    background: rgba(75, 75, 75, 0.5);
+                    margin-bottom: 10px;
                 }
 
-                #tag-input {
+                #tag-input,
+                #desciption,
+                #title {
+                    display: flex;
+                    flex-wrap: wrap;
                     border: 0;
                     outline: 0;
                     flex: 1;
                     min-width: 140px;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: small;
+                }
+
+                textarea {
+                    field-sizing: content;
+                    resize: none;
+                    min-height: calc(1em +16px);
+                    max-height: calc(5em +16px);
+                    background: none;
+                    color: white;
                 }
 
                 .chip {
-                    background: #eee;
+                    background: rgba(45, 45, 45, 0.5);
                     padding: 4px 8px;
                     border: 1px solid rgba(100, 100, 100, 0.5);
                     margin: 2px;
+                    color: white;
+                    display: inline-flex;
                 }
 
                 .chip button {
@@ -264,16 +288,38 @@
                 }
 
                 #suggestions {
+                    position: absolute;
                     list-style: none;
                     padding: 0;
                     margin: 4px 0;
+
+                }
+
+                #suggestions :hover {
+                    background-color: rgb(100, 100, 100);
                 }
 
                 #suggestions button {
                     display: block;
-                    width: 100%;
+                    min-width: 600px;
+
                     text-align: left;
                     padding: 6px;
+                    color: white;
+                    background: rgba(45, 45, 45);
+                    border: 1px solid rgba(100, 100, 100, 0.5);
+
+                }
+
+                #uploaddetails {
+                    text-align: left;
+                }
+
+                #uploaddetails input {
+                    background: none;
+                    color: white;
+
+                    width: 100%;
                 }
             </style>
 </body>

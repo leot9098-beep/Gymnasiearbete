@@ -88,12 +88,16 @@ body{
 #search_button:hover{
    background-color: rgb(91, 91, 91); 
 }
-
+.sidenavbar{
+    display: flex;
+    justify-content: center;
+}
 .quicknav{
     display: flex;
     color: white;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;
+    align-items: center;*/
+  
 }
 .quicknav:hover{
     background-color:rgba(0, 0, 0, 0.5);
