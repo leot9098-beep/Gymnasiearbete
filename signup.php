@@ -14,10 +14,10 @@
         <h1 class="herotxt">Sign up</h1>
         <form method="post" action="" class="LoginInput">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" autocomplete="off" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" autocomplete="off" required>
             <br>
             <input id="Loginbutton" type="submit" name="submit" value="Sign up">
             <br>
