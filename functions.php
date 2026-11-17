@@ -60,7 +60,6 @@ function getUserIDAlt($username)
     return $user ? (int) $user['uid'] : 24;
 }
 
-
 function getForumPosts()
 {
     $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `Users`.username FROM Imageboard LEFT JOIN `Users` ON Imageboard.uid = `Users`.uid ORDER BY Imageboard.time DESC";
@@ -313,26 +312,27 @@ function getAvatar($uid)
     return $user ? $user['pfp'] : null;
 }
 
-function uploadToGallery($filename, $filetype, $ip, $uid)
+function uploadToGallery($filename, $filetype, $ip, $uid, $title, $description, $tags)
 {
     global $db;
 
     $sql = "INSERT INTO Gallery
-            (filetype, filename, pip, uid, related, upvoters, downvoters, reactions, tags)
-            VALUES (:filetype, :filename, :pip, :uid, :related, :upvoters, :downvoters, :reactions, :tags)";
-
+            (filetype, filename, pip, uid, related, upvoters, downvoters, reactions, tags, title, description)
+            VALUES (:filetype, :filename, :pip, :uid, :related, :upvoters, :downvoters, :reactions, :tags, :title, :description)";
 
     try {
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':filetype', $filetype);
         $stmt->bindValue(':filename', $filename);
+        $stmt->bindValue(':title', $title);
+        $stmt->bindValue(':description', $description);
         $stmt->bindValue(':pip', $ip);
         $stmt->bindValue(':uid', $uid);
         $stmt->bindValue(':related', json_encode([]));
         $stmt->bindValue(':upvoters', json_encode([]));
         $stmt->bindValue(':downvoters', json_encode([]));
         $stmt->bindValue(':reactions', json_encode([]));
-        $stmt->bindValue(':tags', json_encode([]));
+        $stmt->bindValue(':tags', json_encode(explode(',', $tags)));
 
         $stmt->execute();
 

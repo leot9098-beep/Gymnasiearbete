@@ -62,6 +62,7 @@
 
         $filename = 'BookOfWho' . bin2hex(random_bytes(6)) . '.' . $allowed[$mime];
         $filetype = $allowed[$mime];
+        $originalFilename = basename($upload['name']);
 
         if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
             http_response_code(500);
@@ -84,7 +85,18 @@
         echo '<p>Uploaded image: ' . htmlspecialchars($filename) . '</p>';
         echo '<p>File type: ' . htmlspecialchars($filetype) . '</p>';
         $ip = $_SERVER['REMOTE_ADDR'];
-        $result = uploadToGallery($filename, $filetype, $ip, $uid);
+        if (($_POST['title'] ?? '') === '') {
+            $title = $originalFilename;
+        } else {
+            $title = $_POST['title'];
+        }
+        if (($_POST['description'] ?? '') === '') {
+            $description = 'No description provided.';
+        } else {
+            $description = $_POST['description'];
+        }
+        $tags = $_POST['tags-input'] ?? json_encode(['[tagme]']);
+        $result = uploadToGallery($filename, $filetype, $ip, $uid, $title, $description, $tags);
         if (!$result) {
             echo 'Gallery insert failed.';
         } else {
