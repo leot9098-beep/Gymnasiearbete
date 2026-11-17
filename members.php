@@ -40,14 +40,15 @@
         <?php
         require_once 'functions.php';
         $records = getMembers();
-
         while ($row = $records->fetch(PDO::FETCH_ASSOC)) { ?>
-
+            <?php $username  = $row['username']; ?>
+            <?php $time  = $row['created_at']; ?>
             <div class="FellowMember">
-                <a href="user.php?username=<?= $row['username'] ?>">
-                    <?= $row['username'] ?>
+                <a href="user.php?username=<?= $username ?>">
+                    <img class="small-profile-member" src="avatars/<?= getAvatar(getUserIDAlt($username)) ?>" alt="Profile" width="32" height="32">
+                    <p><?= $username ?></p>
                 </a>
-                <?= htmlspecialchars($row['created_at']) ?>
+                <p><?= timeAgo($time); ?></p>
             </div>
 
         <?php } ?>
@@ -64,6 +65,13 @@
         color: white;
         text-decoration: none;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .Member p {
+        margin: 0px 20px;
     }
 
     .Member :hover {
@@ -72,7 +80,7 @@
 
     .FellowMember {
         border: 1px solid rgba(100, 100, 100, 0.5);
-        padding: 20px;
+        padding: 4px 4px;
         display: flex;
         justify-content: space-between;
     }
