@@ -78,30 +78,94 @@ if (isset($_POST['submit'])) {
                 <span>Rules</span></a>
         </div>
     </div>
-    <?php
-    $uid = getUserID();
-    echo '<h1>' . $_SESSION['username'] . '</h1>';
-    echo "<h1>user id is $uid</h1>";
-    if ($error) {
-        echo "<p>error " . "$error" . "</p>";
-    }
-    ?>
-    <form method="post" action="">
-        <p>Modify profile: </p>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" autocomplete="off" required value="<?php echo $_SESSION['username']; ?>">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required value="">
-        <br>
-        <input type="submit" name="submit" value="Change">
-    </form>
-
-    <div class="nav"><a href="logout.php">[Log Out]</a>
-        <div class="nav"><a href="logout.php">[Delete Account]</a>
 
 
+
+    <div id="container">
+        <div id="ProfileView">
+
+            <?php
+            echo '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="256" height="256">';
+            $uid = getUserID();
+            echo '<h1> Username: ' . $_SESSION['username'] . '</h1>';
+            echo '<hr size="3px" style=" background-color:white; border:none; width: 50%; margin-right:50%; dashed" >';
+            echo "<h1>user id: $uid</h1>";
+            if ($error) {
+                echo "<p>error " . "$error" . "</p>";
+            }
+            ?>
+        </div>
+
+
+        <div id="ProfileEdit">
+            <form method="post" action="">
+                <label for="username">Change username:</label>
+                <input type="text" id="username" class="superman" name="username" autocomplete="off" placeholder="Enter new username...">
+                <!--   <input type="text" id="username" name="username" autocomplete="off" required value="<?php echo $_SESSION['username']; ?>">-->
+                <br>
+                <label for="password">Change password:</label>
+                <input type="password" id="username" class="superman" name="password" placeholder="Enter new password...">
+                <br>
+                <label for="password">Change Profile avatar:</label>
+                <div class="Bigmenu">
+                    <div class="quicknav" id="bigzone">
+                        <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
+                            <img src="assets/Upload.png"> </img> <br>
+                            <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
+                            <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
+
+                        </label>
+                    </div>
+                </div>
+                <input type="submit" class="flexbutton" name="submit" value="Change">
+
+            </form>
+            <div class="nav"><a href="logout.php">[Log Out]</a></div>
+            <div class="nav"><a href="logout.php" style="color: red;">[Delete Account]</a></div>
+
+
+
+        </div>
 
 </body>
+
+<style>
+    #container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        min-height: 800px;
+
+    }
+
+    #ProfileView {
+        background: rgba(104, 104, 104, 0.8);
+        padding: 40px;
+    }
+
+    #ProfileEdit {
+        background: rgba(45, 45, 45, 0.8);
+        padding: 40px;
+    }
+
+    #ProfileEdit a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+    }
+
+    .superman {
+        display: flex;
+        flex-wrap: wrap;
+        border: 0;
+        outline: 0;
+        flex: 1;
+        min-width: 140px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: small;
+        background: rgba(75, 75, 75, 0.5);
+        color: white;
+        padding: 10px;
+    }
+</style>
 
 </html>

@@ -12,7 +12,11 @@
 
 
 <body>
+    <div class="indextopspace"></div>
     <div class="Bigmenu">
+        <div style="display: flex; justify-content: left;">
+            <a style="color: white; text-decoration:none;" href="index.php"> <img style="transform: translateY(1px);" src="assets/Exit.png"></img> Return</a>
+        </div>
         <h1 class="herotxt">Log in</h1>
         <form method="post" action="" class="LoginInput">
             <label for="username">Username:</label>
