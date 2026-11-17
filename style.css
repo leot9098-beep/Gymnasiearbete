@@ -247,6 +247,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 5px;
+    display: none;
 }
 
 .gallery-suboptions-button {
@@ -258,16 +259,20 @@ body{
     cursor: crosshair;
     background-color: rgba(25, 25, 25, 0.4);
     border: 1px solid rgb(255, 255, 255, 0.20);
-    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.gallery-suboptions-icon {
+    height: 15px;
+    width: 15px;
+    transform: translateX(-1px);
 }
 
 .gallery-suboptions-button:hover {
     background-color: rgba(100, 100, 100, 0.5);
     border: 1px solid rgb(255, 255, 255, 0.5);
 }
-
 
 .gallery-title {
     font-weight: bold;
@@ -320,6 +325,34 @@ body{
 
 .gallery-info {
 
+}
+
+dialog {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(100, 100, 100);
+    color: white;
+    padding: 0px 4px 0px 4px;
+}
+
+dialog button {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+dialog button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+.dialog-top-bar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgb(100, 100, 100);
 }
 
 .gallery-image {

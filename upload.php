@@ -9,7 +9,6 @@
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
 
-
 <body>
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
@@ -18,34 +17,23 @@
                     <img src="assets/Upload.png"> </img> <br>
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                     <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
-
                 </label>
-
             </div>
             <ul id="filelist"></ul>
-
             <div id="uploaddetails" hidden>
                 <div id="tag-box">
                     <input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">
                 </div>
-
                 <div id="tag-box">
                     <textarea id="desciption" name="description" placeholder="Add a description..." autocomplete="off"></textarea>
                 </div>
-
-
-
                 <div id="tag-box">
                     <div id="tags"></div>
                     <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
-                    </input>
-
                 </div>
                 <ul id="suggestions"></ul>
                 <input type="submit" class="flexbutton" name="submit" value="Upload">
             </div>
-
-
             <script>
                 /* const label = document.createElement("label");
                 label.htmlFor
@@ -239,7 +227,6 @@
 </div>
 <ul id="suggestions" hidden></ul>*/
             </script>
-
             <style>
                 #tag-box {
                     display: flex;
