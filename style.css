@@ -194,6 +194,11 @@ body{
     margin-left: 10px;
 }
 
+.small-profile-member{
+    border:rgb(100, 100, 100) 1px solid;
+}
+
+
 .indexlink{
     display: flex;
     align-items: center;

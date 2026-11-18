@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Leo fixa baren.</h1>
+    <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
             <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
@@ -21,8 +21,11 @@
                 <span>Forum</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="members.php"> <img src="assets/Members.png"></img>
-                <span>Members</span></a>
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+                <span>Gallery</span></a>
         </div>
         <div class="quicknav">
             <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
