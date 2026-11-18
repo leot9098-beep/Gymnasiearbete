@@ -44,7 +44,7 @@
             echo '<button id="upvote-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/up.png"></img></button>';
             echo '<button id="downvote-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/down.png"></img></button>';
             echo '<button id="favorite-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/star.png"></img></button>';
-            echo '<button id="report-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/flag.png"></img></button>';
+            echo '<button id="report-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/Megaphone.png"></img></button>';
             echo '<button id="edit-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/edit.png"></img></button>';
             echo '<button id="delete-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/trash.png"></img></button>';
             echo '<button id="moderate-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="viewImageOptions(' . $image['pid'] . ')"><img src="assets/hammer.png"></img></button>';

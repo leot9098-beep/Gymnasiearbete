@@ -377,3 +377,18 @@ function timeAgo(string $time): string
     $days = (int) floor($seconds / 86400);
     return $days . ' day' . ($days === 1 ? '' : 's') . ' ago';
 }
+
+function userCreatedTimeAgo($username)
+{
+    global $db;
+
+    $stmt = $db->prepare(
+        "SELECT created_at FROM Users WHERE username = :username LIMIT 1"
+    );
+
+    $stmt->execute([':username' => $username]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $user['created_at'];
+}

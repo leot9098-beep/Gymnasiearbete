@@ -83,13 +83,17 @@ if (isset($_POST['submit'])) {
 
     <div id="container">
         <div id="ProfileView">
-
             <?php
+            $username = $_SESSION['username'];
             echo '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="256" height="256">';
             $uid = getUserID();
             echo '<h1> Username: ' . $_SESSION['username'] . '</h1>';
-            echo '<hr size="3px" style=" background-color:white; border:none; width: 50%; margin-right:50%; dashed" >';
-            echo "<h1>user id: $uid</h1>";
+            echo '<hr size="3px" style=" background-color:white; border:none;  dashed" >';
+            echo '<p>Fellow Member since: ' . userCreatedTimeAgo($username) . '</p>';
+            echo '<p>Uploads: </p>';
+            echo "<p>User id: $uid</p>";
+            echo '<p>Status: ' . rand(-1000, 1000) . ' Social Credit </p>';
+            echo '<p>Horse level: ' . rand(0, 100) . '% horse </p>';
             if ($error) {
                 echo "<p>error " . "$error" . "</p>";
             }
@@ -120,9 +124,10 @@ if (isset($_POST['submit'])) {
                 <input type="submit" class="flexbutton" name="submit" value="Change">
 
             </form>
-            <div class="nav"><a href="logout.php">[Log Out]</a></div>
-            <div class="nav"><a href="logout.php" style="color: red;">[Delete Account]</a></div>
-
+            <div id="ProfileEnd">
+                <div class="nav"><a href="logout.php">[Log Out]</a></div>
+                <div class="nav"><a href="logout.php" style="color: red;">[Delete Account]</a></div>
+            </div>
 
 
         </div>
@@ -140,6 +145,7 @@ if (isset($_POST['submit'])) {
     #ProfileView {
         background: rgba(104, 104, 104, 0.8);
         padding: 40px;
+
     }
 
     #ProfileEdit {
@@ -147,11 +153,23 @@ if (isset($_POST['submit'])) {
         padding: 40px;
     }
 
+    /* #ProfileEdit form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }*/
+
     #ProfileEdit a {
+
         color: white;
         text-decoration: none;
         display: flex;
     }
+
+    #ProfileEnd {
+        margin-top: 60px;
+    }
+
 
     .superman {
         display: flex;
