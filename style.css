@@ -88,6 +88,28 @@ body{
 #search_button:hover{
    background-color: rgb(91, 91, 91); 
 }
+.sortbyandsearcharea {
+        display: grid;
+        grid-template-columns: 60px 1fr 1fr 800px 1fr 1fr 60px;
+        align-items: center;
+    }
+    .sortbyandsearcharea select{
+        color: white;
+        background-color: rgb(49, 49, 49);
+        border: rgb(100, 100, 100) 1px solid;
+        font-weight: bold;
+        height: 40px;
+
+    }
+
+input[type="text"]:focus,
+input[type="password"]:focus{
+    outline: none;
+    box-shadow: 0 0 0px 1px lime;
+}
+#tag-box:focus-within {
+    box-shadow: 0 0 0 1px lime;
+}
 .sidenavbar{
     display: flex;
     justify-content: center;

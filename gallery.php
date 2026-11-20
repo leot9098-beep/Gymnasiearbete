@@ -32,6 +32,29 @@
                 <span>Rules</span></a>
         </div>
     </div>
+    <div class="sortbyandsearcharea">
+        <br>
+        <select>
+            <option>Newest</option>
+            <option>Oldest</option>
+            <option>Most upvotes</option>
+            <option>Most downvotes</option>
+        </select>
+        <select>
+            <option>All</option>
+            <option>Image</option>
+            <option>Gif</option>
+        </select>
+
+
+        <form class="Searcharea">
+            <input type="text" id="search" name="search" />
+            <input id="search_button" type="submit" value="" />
+
+        </form>
+    </div>
+
+
     <div>
         <?php
         require_once 'functions.php';

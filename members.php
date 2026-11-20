@@ -33,7 +33,19 @@
         </div>
     </div>
     <h1>Members of the Whos</h1>
+    <div class="sortbyandsearcharea">
+        <br>
+        <select>
+            <option>Newest member</option>
+            <option>Oldest member</option>
+        </select>
+        <br>
+        <form class="Searcharea">
+            <input type="text" id="search" name="search" />
+            <input id="search_button" type="submit" value="" />
 
+        </form>
+    </div>
 
     <div class="Member">
 

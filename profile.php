@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
             <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
                 <span>Forum</span></a>
         </div>
-        <div class="quicknav">
+        <div class="quicknav ">
             <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
         </div>
         <div class="quicknav">

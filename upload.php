@@ -49,7 +49,8 @@
 
             <div id="uploaddetails" hidden>
                 <div id="tag-box">
-                    <input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                    <input type="" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                    <!--<input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">-->
                 </div>
 
                 <div id="tag-box">
@@ -60,7 +61,9 @@
 
                 <div id="tag-box">
                     <div id="tags"></div>
-                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+                    <input id="tag-input" type="" placeholder="Add tags..." autocomplete="off">
+                    <!--                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+-->
                     </input>
 
                 </div>

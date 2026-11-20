@@ -48,7 +48,7 @@
                 </ul>
                 <p>1a. No illegal content.</p>
                 <p>1b. No NSFW or degeneracy. This includes pornography, nudity, gore and animal abuse.</p>
-                <p>1c. No posting credible death threats</p>
+                <p>1c. No posting credible death threats.</p>
                 <p>1d. No posts that violate school workplace ethics.</p>
                 <p>1e. No unsolicited advertising.</p>
                 <p>1f. No ban evasion.</p>
@@ -62,7 +62,7 @@
 
             </ol>
         </div>
-        <p style="font-weight:bold; text-decoration: underline;">Breaking the rules will lead to a account ban or post deletion </p>
+        <p style="font-weight:bold; text-decoration: underline;">Breaking the rules will lead to a account ban or post deletion.</p>
     </div>
 </body>
 
