@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members</title>
+    <title>Book of Whos - Members</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
@@ -13,22 +13,22 @@
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
-            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                 <span>Upload</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                 <span>Forum</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
                 <span>Gallery</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
         </div>
     </div>

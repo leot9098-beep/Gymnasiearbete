@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Book of Whos - Profile</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
@@ -59,22 +59,22 @@ if (isset($_POST['submit'])) {
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
-            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                 <span>Upload</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                 <span>Forum</span></a>
         </div>
         <div class="quicknav ">
-            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
                 <span>Gallery</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
         </div>
     </div>
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
             echo '<p>Uploads: </p>';
             echo "<p>User id: $uid</p>";
             echo '<p>Status: ' . rand(-1000, 1000) . ' Social Credit </p>';
-            echo '<p>Horse level: ' . rand(0, 100) . '% horse </p>';
+            echo '<p>IQ level: ' . rand(0, 100) . '% smart </p>';
             if ($error) {
                 echo "<p>error " . "$error" . "</p>";
             }
@@ -112,9 +112,9 @@ if (isset($_POST['submit'])) {
                 <br>
                 <label for="password">Change Profile avatar:</label>
                 <div class="Bigmenu">
-                    <div class="quicknav" id="bigzone">
+                    <div class="quicknav" id="bigzone" style="max-width: 100%;">
                         <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
-                            <img src="assets/Upload.png"> </img> <br>
+                            <img src="assets/Upload.png"> <br>
                             <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                             <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
 
