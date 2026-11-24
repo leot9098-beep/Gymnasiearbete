@@ -32,7 +32,10 @@
                 <span>Rules</span></a>
         </div>
     </div>
-
+    <div><?php if (!isset($_SESSION['username'])) {
+                echo '<h2>You are uploading anonymously.</h2>';
+                echo '<h3>You will not be able to delete or edit your uploads.</h3>';
+            } ?>(leo style this)</div>
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
             <div class="quicknav" id="bigzone">

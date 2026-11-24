@@ -336,13 +336,21 @@ dialog {
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(100, 100, 100);
     color: white;
-    padding: 0px 4px 0px 4px;
+    padding: 0px;
 }
 
-dialog button {
+dialog p{
+    margin: 0px;
+}
+
+.dialog-top-bar button {
     background-color: transparent;
     border: none;
     color: white;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    font-size: 20px;
 }
 
 dialog button:hover {
@@ -355,9 +363,10 @@ dialog::backdrop {
 
 .dialog-top-bar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.7);
     border-bottom: 1px solid rgb(100, 100, 100);
+    margin: 0px 0px 0px 0px;
 }
 
 .gallery-image {
@@ -379,6 +388,55 @@ dialog::backdrop {
     grid-template-columns: repeat(auto-fill, 295px);
     grid-gap: 20px;
     transform: translateX(-1px);
+}
+
+.created-at-member {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.Member {
+    font-weight: bold;
+    align-items: center;
+    padding: 0px;
+    flex-direction: column;
+}
+
+.member-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.member-container-0{
+    background: rgba(40, 40, 40, 0.8);
+}
+
+.member-container-1{
+    background: rgba(50, 50, 50, 0.8);
+}
+
+.Member a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    padding: 0px;
+}
+
+.Member p {
+    margin: 0px 8px;
+}
+
+.Member a:hover {
+    background: rgba(75, 75, 75, 0.8);
+}
+
+.user-info-member {
+    padding: 4px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media screen and (max-width: 640px) {

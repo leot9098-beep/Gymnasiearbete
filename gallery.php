@@ -38,7 +38,7 @@
         echo '<div class="gallery-container">';
         foreach (getGalleryImages() as $image) {
             echo '<div class="gallery-item">';
-            echo '<a href="view.php?pid=' . $image['pid'] . '"><div class="gallery-image" style="background-image: url(\'uploads/' . $image['filename'] . '\');"></div></a>';
+            echo '<a href="view.php?pid=' . $image['pid'] . '"><div class="gallery-image" style="background-image: url(\'thumbnail/' . $image['thumbname'] . '\');"></div></a>';
             echo '<button id="options-button-' . $image['pid'] . '" class="gallery-options-button" onclick="viewImageOptions(' . $image['pid'] . ')">···</button>';
             echo '<div class="gallery-options" id="options-' . $image['pid'] . '">';
             echo '<button id="upvote-button-' . $image['pid'] . '" class="gallery-suboptions-button" onclick="upvoteImage(' . $image['pid'] . ')"><div class="gallery-suboptions-icon" style="background-image: url(\'assets/up.png\');"></div></button>';
@@ -133,37 +133,147 @@
 
         function moderateImage(pid) {
             console.log(`Moderating image with pid: ${pid}`);
+
             const opener = event.target.closest('.gallery-suboptions-button');
             if (!opener) return;
 
             const dialog = document.createElement('dialog');
-            const topBar = document.createElement('div');
-            topBar.classList.add('dialog-top-bar');
-            const closeButton = document.createElement('button');
+            const top_bar = document.createElement('div');
+            top_bar.classList.add('dialog-top-bar');
+
+            const close_button = document.createElement('button');
+            close_button.type = 'button';
+            close_button.textContent = '×';
+            close_button.setAttribute('aria-label', 'Close');
+
             const content = document.createElement('p');
+            content.textContent = 'Moderation Panel Post: ' + pid;
 
-            closeButton.type = 'button';
-            closeButton.textContent = '×';
-            closeButton.setAttribute('aria-label', 'Close');
+            const dialog_bar1 = document.createElement('div');
+            dialog_bar1.classList.add('dialog-bar');
 
-            content.textContent = "Report a hero.";
+            const mod_perms_p = document.createElement('p');
+            mod_perms_p.textContent = 'Modify Permissions';
 
-            dialog.append(topBar, closeButton, content);
+            const mod_perms_button_standard = document.createElement('button');
+            const mod_perms_button_trusted = document.createElement('button');
+            const mod_perms_button_approver = document.createElement('button');
+            const mod_perms_button_mod = document.createElement('button');
+
+            mod_perms_button_standard.textContent = 'Standard';
+            mod_perms_button_trusted.textContent = 'Trusted';
+            mod_perms_button_approver.textContent = 'Approver';
+            mod_perms_button_mod.textContent = 'Moderator';
+
+            for (const button of [
+                    mod_perms_button_standard,
+                    mod_perms_button_trusted,
+                    mod_perms_button_approver,
+                    mod_perms_button_mod
+                ]) {
+                button.type = 'button';
+            }
+
+            const dialog_bar2 = document.createElement('div');
+            dialog_bar2.classList.add('dialog-bar');
+
+            const ban_p = document.createElement('p');
+            ban_p.textContent = 'Ban';
+
+            const ban_option = document.createElement('select');
+            const ban_option_ban = document.createElement('option');
+            const ban_option_ban_delete = document.createElement('option');
+            const ban_option_ban_delete_uploads = document.createElement('option');
+            const ban_option_ban_wipe = document.createElement('option');
+
+            ban_option_ban.textContent = 'Ban user';
+            ban_option_ban_delete.textContent = 'Ban + Delete post';
+            ban_option_ban_delete_uploads.textContent = 'Ban + Delete uploads';
+            ban_option_ban_wipe.textContent = 'Ban + Wipe';
+
+            ban_option.append(
+                ban_option_ban,
+                ban_option_ban_delete,
+                ban_option_ban_delete_uploads,
+                ban_option_ban_wipe
+            );
+
+            const ban_rule = document.createElement('select');
+            const ruleLabels = [
+                'Other',
+                '1. You will not fight against the power holders will.',
+                '1a. No illegal content.',
+                '1b. No NSFW or degeneracy.',
+                '1c. No posting credible death threats.',
+                '1d. No posts that violate school workplace ethics.',
+                '1e. No unsolicited advertising.',
+                '1f. No ban evasion.',
+                '2. You will not disrupt this site/shut this site down.',
+                '2a. No automated spamming/disruption.',
+                '2b. No posts that intend to slow down ones browser.',
+                '2c. No posting encrypted messages/files/images.',
+                '2d. Do not vandalize gallery tags.'
+            ];
+
+            for (const label of ruleLabels) {
+                const option = document.createElement('option');
+                option.textContent = label;
+                ban_rule.append(option);
+            }
+
+            const ban_reason = document.createElement('input');
+            ban_reason.type = 'text';
+
+            const ban_length = document.createElement('select');
+            const ban_length_1day = document.createElement('option');
+            const ban_length_7day = document.createElement('option');
+            const ban_length_30day = document.createElement('option');
+            const ban_length_perma = document.createElement('option');
+
+            ban_length_1day.textContent = '1 Day';
+            ban_length_7day.textContent = '7 Days';
+            ban_length_30day.textContent = '30 Days';
+            ban_length_perma.textContent = 'Permanent';
+
+            ban_length.append(
+                ban_length_1day,
+                ban_length_7day,
+                ban_length_30day,
+                ban_length_perma
+            );
+
+            const ban_button = document.createElement('button');
+            ban_button.type = 'button';
+            ban_button.textContent = 'Ban';
+
+            dialog.append(top_bar, dialog_bar1, dialog_bar2);
             document.body.append(dialog);
 
-            closeButton.addEventListener('click', () => dialog.close());
+            top_bar.append(content, close_button);
+            dialog_bar1.append(
+                mod_perms_p,
+                mod_perms_button_standard,
+                mod_perms_button_trusted,
+                mod_perms_button_approver,
+                mod_perms_button_mod
+            );
+            dialog_bar2.append(ban_p, ban_option, ban_rule, ban_reason, ban_length, ban_button);
 
-            // Close when the backdrop is clicked
+            close_button.addEventListener('click', () => dialog.close());
+
             dialog.addEventListener('click', event => {
                 if (event.target === dialog) dialog.close();
             });
 
-            // Remove the dialog from the page after it closes
-            dialog.addEventListener('close', () => dialog.remove(), {
-                once: true
-            });
+            dialog.addEventListener(
+                'close',
+                () => dialog.remove(), {
+                    once: true
+                }
+            );
 
             dialog.showModal();
+
         }
     </script>
 </body>
