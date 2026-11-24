@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start();
+require_once 'functions.php';
+require_once 'bancheck.php';
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -13,12 +17,16 @@
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
+                <span>Forum</span></a>
+        </div>
+        <div class="quicknav">
             <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                 <span>Upload</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
-                <span>Forum</span></a>
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
+                <span>Gallery</span></a>
         </div>
         <div class="quicknav">
             <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
@@ -31,7 +39,19 @@
             <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
         </div>
+        <div class="quicknav"><?php if (!isset($_SESSION['username'])) { ?>
+
+                <a class="flexnav" href="login.php"> <img src="assets/Profile.png">
+                    <span>Login</span></a>
+
+            <?php } else { ?>
+                <a class="flexnav" href="profile.php"> <img src="assets/Profile.png">
+                    <span>Profile</span></a>
+            <?php } ?>
+        </div>
     </div>
+
+
     <div class="sortbyandsearcharea">
         <br>
         <select>
@@ -42,8 +62,8 @@
         </select>
         <select>
             <option>All</option>
-            <option>Image</option>
-            <option>Gif</option>
+            <option>Images</option>
+            <option>Gifs</option>
         </select>
 
 
@@ -86,6 +106,22 @@
         }
         echo '</div>';
         ?>
+    </div>
+    <div class="layer">
+        <!--behöver en foreach bla bla bla och lägga till denna i members.php senare-->
+        <a>
+            << </a>
+                <a>
+                    < </a>
+                        <a style="border: lime 1px solid;">1</a>
+                        <a>2</a>
+                        <a>3</a>
+                        <a>4</a>
+                        <a>5</a>
+                        <a>></a>
+                        <a>>></a>
+    </div>
+
     </div>
     <script>
         function viewImageOptions(pid) {
@@ -298,6 +334,10 @@
             dialog.showModal();
 
         }
+
+        document.querySelectorAll(".layer a").forEach(link => {
+            link.href = "gallery.php"
+        });
     </script>
 </body>
 

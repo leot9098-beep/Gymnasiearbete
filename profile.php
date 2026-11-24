@@ -59,23 +59,37 @@ if (isset($_POST['submit'])) {
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
-            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
-                <span>Upload</span></a>
-        </div>
-        <div class="quicknav">
             <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                 <span>Forum</span></a>
         </div>
-        <div class="quicknav ">
-            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
+        <div class="quicknav">
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
+                <span>Upload</span></a>
         </div>
         <div class="quicknav">
             <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
                 <span>Gallery</span></a>
         </div>
         <div class="quicknav">
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
+        </div>
+        <div class="quicknav">
+            <a class="flexnav" href="members.php"> <img src="assets/Members.png">
+                <span>Members</span></a>
+        </div>
+        <div class="quicknav">
             <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
+        </div>
+        <div class="quicknav"><?php if (!isset($_SESSION['username'])) { ?>
+
+                <a class="flexnav" href="login.php"> <img src="assets/Profile.png">
+                    <span>Login</span></a>
+
+            <?php } else { ?>
+                <a class="flexnav" href="profile.php"> <img src="assets/Profile.png">
+                    <span>Profile</span></a>
+            <?php } ?>
         </div>
     </div>
 
