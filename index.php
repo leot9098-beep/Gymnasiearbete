@@ -22,7 +22,7 @@ require_once 'bancheck.php';
             <?php } else { ?>
                 <a class="indexlink" href="user.php?username=<?= $_SESSION['username'] ?>">Logged in as <?= $_SESSION['username'] ?><?= '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="32" height="32">' ?></a>
                 <a class="indexlink" href="profile.php">Modify User</a>
-                <a class="indexlink" href="logout.php">Log out</a>
+                <!--<a class="indexlink" href="logout.php">Log out</a>-->
             <?php } ?>
         </div>
 
@@ -31,24 +31,24 @@ require_once 'bancheck.php';
         <div class="flexrow">
             <div class="quicknav">
                 <a class="flexnav" href="gallery.php">
-                    <img src="assets/Gallery.png"></img>
+                    <img src="assets/Gallery.png">
                     <span>Gallery</span>
                 </a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+                <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                     <span>Upload</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+                <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                     <span>Forum</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="members.php"> <img src="assets/Members.png"></img>
+                <a class="flexnav" href="members.php"> <img src="assets/Members.png">
                     <span>Members</span></a>
             </div>
             <div class="quicknav">
-                <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+                <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                     <span>Rules</span></a>
             </div>
         </div>

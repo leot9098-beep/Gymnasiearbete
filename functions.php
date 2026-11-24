@@ -402,3 +402,18 @@ function failUpload(int $code, string $message, array $files = []): void
     http_response_code($code);
     exit($message);
 }
+  
+function userCreatedTimeAgo($username)
+{
+    global $db;
+
+    $stmt = $db->prepare(
+        "SELECT created_at FROM Users WHERE username = :username LIMIT 1"
+    );
+
+    $stmt->execute([':username' => $username]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $user['created_at'];
+}
