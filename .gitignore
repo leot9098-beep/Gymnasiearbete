@@ -3,4 +3,6 @@ db.php
 !/uploads/.gitkeep
 /avatars/*
 !/avatars/.gitkeep
+/thumbnail/*
+!/thumbnail/.gitkeep
 test.php
