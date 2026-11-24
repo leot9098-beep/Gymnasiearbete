@@ -60,7 +60,6 @@ function getUserIDAlt($username)
     return $user ? (int) $user['uid'] : 24;
 }
 
-
 function getForumPosts()
 {
     $sql = "SELECT Imageboard.message, Imageboard.time, Imageboard.uid, `Users`.username FROM Imageboard LEFT JOIN `Users` ON Imageboard.uid = `Users`.uid ORDER BY Imageboard.time DESC";
@@ -313,26 +312,29 @@ function getAvatar($uid)
     return $user ? $user['pfp'] : null;
 }
 
-function uploadToGallery($filename, $filetype, $ip, $uid)
+function uploadToGallery($filename, $filetype, $thumbnailFilename, $originalFilename, $ip, $uid, $title, $description, $tags)
 {
     global $db;
 
     $sql = "INSERT INTO Gallery
-            (filetype, filename, pip, uid, related, upvoters, downvoters, reactions, tags)
-            VALUES (:filetype, :filename, :pip, :uid, :related, :upvoters, :downvoters, :reactions, :tags)";
-
+            (filetype, filename, thumbname, originalname, pip, uid, related, upvoters, downvoters, reactions, tags, title, description)
+            VALUES (:filetype, :filename, :thumbname, :originalname, :pip, :uid, :related, :upvoters, :downvoters, :reactions, :tags, :title, :description)";
 
     try {
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':filetype', $filetype);
         $stmt->bindValue(':filename', $filename);
+        $stmt->bindValue(':thumbname', $thumbnailFilename);
+        $stmt->bindValue(':originalname', $originalFilename);
+        $stmt->bindValue(':title', $title);
+        $stmt->bindValue(':description', $description);
         $stmt->bindValue(':pip', $ip);
         $stmt->bindValue(':uid', $uid);
         $stmt->bindValue(':related', json_encode([]));
         $stmt->bindValue(':upvoters', json_encode([]));
         $stmt->bindValue(':downvoters', json_encode([]));
         $stmt->bindValue(':reactions', json_encode([]));
-        $stmt->bindValue(':tags', json_encode([]));
+        $stmt->bindValue(':tags', json_encode(explode(',', $tags)));
 
         $stmt->execute();
 
@@ -344,7 +346,7 @@ function uploadToGallery($filename, $filetype, $ip, $uid)
 
 function getGalleryImages()
 {
-    $sql = "SELECT Gallery.pid, Gallery.filename, Gallery.description, Gallery.title, Gallery.time, Gallery.uid, `Users`.username FROM Gallery LEFT JOIN `Users` ON Gallery.uid = `Users`.uid ORDER BY Gallery.time DESC";
+    $sql = "SELECT Gallery.pid, Gallery.filename, Gallery.thumbname, Gallery.originalname, Gallery.description, Gallery.title, Gallery.time, Gallery.uid, `Users`.username FROM Gallery LEFT JOIN `Users` ON Gallery.uid = `Users`.uid ORDER BY Gallery.time DESC";
 
     global $db;
     $stmt = $db->prepare($sql);
@@ -378,6 +380,29 @@ function timeAgo(string $time): string
     return $days . ' day' . ($days === 1 ? '' : 's') . ' ago';
 }
 
+function getGalleryHighestPID()
+{
+    global $db;
+
+    $sql = "SELECT MAX(pid) AS highest_pid FROM Gallery";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['highest_pid'] ?? 0; // 0 if the table is empty
+}
+
+function failUpload(int $code, string $message, array $files = []): void
+{
+    foreach ($files as $f) {
+        if (is_string($f) && is_file($f)) {
+            @unlink($f);
+        }
+    }
+    http_response_code($code);
+    exit($message);
+}
+  
 function userCreatedTimeAgo($username)
 {
     global $db;

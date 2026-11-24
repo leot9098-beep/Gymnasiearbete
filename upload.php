@@ -9,7 +9,6 @@
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
 
-
 <body>
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
@@ -33,7 +32,10 @@
                 <span>Rules</span></a>
         </div>
     </div>
-
+    <div><?php if (!isset($_SESSION['username'])) {
+                echo '<h2>You are uploading anonymously.</h2>';
+                echo '<h3>You will not be able to delete or edit your uploads.</h3>';
+            } ?>(leo style this)</div>
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
             <div class="quicknav" id="bigzone" style="max-width: 100%;">
@@ -41,24 +43,17 @@
                     <img src="assets/Upload.png"> <br>
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                     <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
-
                 </label>
-
             </div>
             <ul id="filelist"></ul>
-
             <div id="uploaddetails" hidden>
                 <div id="tag-box">
                     <input type="" id="title" name="title" placeholder="Add a title..." autocomplete="off">
                     <!--<input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">-->
                 </div>
-
                 <div id="tag-box">
                     <textarea id="desciption" name="description" placeholder="Add a description..." autocomplete="off"></textarea>
                 </div>
-
-
-
                 <div id="tag-box">
                     <div id="tags"></div>
                     <input id="tag-input" type="" placeholder="Add tags..." autocomplete="off">
@@ -70,8 +65,6 @@
                 <ul id="suggestions"></ul>
                 <input type="submit" class="flexbutton" name="submit" value="Upload">
             </div>
-
-
             <script>
                 /* const label = document.createElement("label");
                 label.htmlFor
@@ -265,7 +258,6 @@
 </div>
 <ul id="suggestions" hidden></ul>*/
             </script>
-
             <style>
                 #tag-box {
                     display: flex;
