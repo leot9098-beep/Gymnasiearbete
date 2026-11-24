@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Book of Whos - Profile</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="assets/icon.png">
 </head>
@@ -59,22 +59,22 @@ if (isset($_POST['submit'])) {
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
-            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                 <span>Upload</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                 <span>Forum</span></a>
         </div>
-        <div class="quicknav">
-            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+        <div class="quicknav ">
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
                 <span>Gallery</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
         </div>
     </div>
@@ -83,13 +83,17 @@ if (isset($_POST['submit'])) {
 
     <div id="container">
         <div id="ProfileView">
-
             <?php
+            $username = $_SESSION['username'];
             echo '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="256" height="256">';
             $uid = getUserID();
             echo '<h1> Username: ' . $_SESSION['username'] . '</h1>';
-            echo '<hr size="3px" style=" background-color:white; border:none; width: 50%; margin-right:50%; dashed" >';
-            echo "<h1>user id: $uid</h1>";
+            echo '<hr size="3px" style=" background-color:white; border:none;  dashed" >';
+            echo '<p>Fellow Member since: ' . userCreatedTimeAgo($username) . '</p>';
+            echo '<p>Uploads: </p>';
+            echo "<p>User id: $uid</p>";
+            echo '<p>Status: ' . rand(-1000, 1000) . ' Social Credit </p>';
+            echo '<p>IQ level: ' . rand(0, 100) . '% smart </p>';
             if ($error) {
                 echo "<p>error " . "$error" . "</p>";
             }
@@ -108,9 +112,9 @@ if (isset($_POST['submit'])) {
                 <br>
                 <label for="password">Change Profile avatar:</label>
                 <div class="Bigmenu">
-                    <div class="quicknav" id="bigzone">
+                    <div class="quicknav" id="bigzone" style="max-width: 100%;">
                         <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
-                            <img src="assets/Upload.png"> </img> <br>
+                            <img src="assets/Upload.png"> <br>
                             <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                             <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
 
@@ -120,9 +124,10 @@ if (isset($_POST['submit'])) {
                 <input type="submit" class="flexbutton" name="submit" value="Change">
 
             </form>
-            <div class="nav"><a href="logout.php">[Log Out]</a></div>
-            <div class="nav"><a href="logout.php" style="color: red;">[Delete Account]</a></div>
-
+            <div id="ProfileEnd">
+                <div class="nav"><a href="logout.php">[Log Out]</a></div>
+                <div class="nav"><a href="logout.php" style="color: red;">[Delete Account]</a></div>
+            </div>
 
 
         </div>
@@ -140,6 +145,7 @@ if (isset($_POST['submit'])) {
     #ProfileView {
         background: rgba(104, 104, 104, 0.8);
         padding: 40px;
+
     }
 
     #ProfileEdit {
@@ -147,11 +153,23 @@ if (isset($_POST['submit'])) {
         padding: 40px;
     }
 
+    /* #ProfileEdit form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }*/
+
     #ProfileEdit a {
+
         color: white;
         text-decoration: none;
         display: flex;
     }
+
+    #ProfileEnd {
+        margin-top: 60px;
+    }
+
 
     .superman {
         display: flex;

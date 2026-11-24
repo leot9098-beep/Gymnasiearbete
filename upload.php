@@ -13,22 +13,22 @@
     <!--NAVBAR OCH TITEL-->
     <div class="sidenavbar">
         <div class="quicknav">
-            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png"></img>
+            <a class="flexnav" href="upload.php"> <img src="assets/Upload.png">
                 <span>Upload</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png"></img>
+            <a class="flexnav" href="forum.php"> <img src="assets/Forum.png">
                 <span>Forum</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png" width="200px"></img></a>
+            <a class="flexnav" href="index.php"> <img src="assets/Book of whos - Title.png"></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png"></img>
+            <a class="flexnav" href="gallery.php"> <img src="assets/Gallery.png">
                 <span>Gallery</span></a>
         </div>
         <div class="quicknav">
-            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png"></img>
+            <a class="flexnav" href="rules.php"> <img src="assets/Questionmark.png">
                 <span>Rules</span></a>
         </div>
     </div>
@@ -38,9 +38,9 @@
             } ?>(leo style this)</div>
     <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
         <div class="Bigmenu">
-            <div class="quicknav" id="bigzone">
+            <div class="quicknav" id="bigzone" style="max-width: 100%;">
                 <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
-                    <img src="assets/Upload.png"> </img> <br>
+                    <img src="assets/Upload.png"> <br>
                     <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
                     <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
                 </label>
@@ -48,14 +48,19 @@
             <ul id="filelist"></ul>
             <div id="uploaddetails" hidden>
                 <div id="tag-box">
-                    <input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                    <input type="" id="title" name="title" placeholder="Add a title..." autocomplete="off">
+                    <!--<input type="text" id="title" name="title" placeholder="Add a title..." autocomplete="off">-->
                 </div>
                 <div id="tag-box">
                     <textarea id="desciption" name="description" placeholder="Add a description..." autocomplete="off"></textarea>
                 </div>
                 <div id="tag-box">
                     <div id="tags"></div>
-                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+                    <input id="tag-input" type="" placeholder="Add tags..." autocomplete="off">
+                    <!--                    <input id="tag-input" type="text" placeholder="Add tags..." autocomplete="off">
+-->
+                    </input>
+
                 </div>
                 <ul id="suggestions"></ul>
                 <input type="submit" class="flexbutton" name="submit" value="Upload">
