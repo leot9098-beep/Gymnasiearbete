@@ -16,13 +16,10 @@ require_once 'bancheck.php';
 <body>
     <div class="indextopspace"></div>
     <div class="Indexmenu">
-        <div class="menu"><?php if (!isset($_SESSION['username'])) { ?>
-                <a href="login.php">Log in</a>
-                <a href="signup.php">Sign up</a>
-            <?php } else { ?>
+        <div class="menu">
+            <?php if (isset($_SESSION['username'])) { ?>
                 <a class="indexlink" href="user.php?username=<?= $_SESSION['username'] ?>">Logged in as <?= $_SESSION['username'] ?><?= '<img class="small-profile" src="avatars/' . getAvatar(getUserID()) . '" alt="Profile" width="32" height="32">' ?></a>
                 <a class="indexlink" href="profile.php">Modify User</a>
-                <!--<a class="indexlink" href="logout.php">Log out</a>-->
             <?php } ?>
         </div>
 
@@ -63,7 +60,7 @@ require_once 'bancheck.php';
 
         </div>
 
-        <form class="Searcharea">
+        <form class="Searcharea" action="gallery.php">
             <input type="text" id="search" name="search" />
             <input id="search_button" type="submit" value="" />
 
