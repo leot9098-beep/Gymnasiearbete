@@ -34,8 +34,6 @@ if (isset($_POST['submit'])) {
             } else {
                 $error = true;
             }
-        } else {
-            echo "You must enter a username, and password.";
         }
     } else {
         $error = true;
@@ -107,7 +105,7 @@ if (isset($_POST['submit'])) {
             echo '<p>Uploads: </p>';
             echo "<p>User id: $uid</p>";
             echo '<p>Status: ' . rand(-1000, 1000) . ' Social Credit </p>';
-            echo '<p>IQ level: ' . rand(0, 100) . '% smart </p>';
+            echo '<p>ZZZ Pulls (not permanent): ' . rand(-100, 100) . ' pulls </p>';
             if ($error) {
                 echo "<p>error " . "$error" . "</p>";
             }
@@ -118,25 +116,24 @@ if (isset($_POST['submit'])) {
         <div id="ProfileEdit">
             <form method="post" action="">
                 <label for="username">Change username:</label>
-                <input type="text" id="username" class="superman" name="username" autocomplete="off" placeholder="Enter new username...">
+                <input type="text" id="username" class="superman" name="username" autocomplete="off" placeholder="Enter new username..." required>
                 <!--   <input type="text" id="username" name="username" autocomplete="off" required value="<?php echo $_SESSION['username']; ?>">-->
                 <br>
                 <label for="password">Change password:</label>
-                <input type="password" id="username" class="superman" name="password" placeholder="Enter new password...">
+                <input type="password" id="username" class="superman" name="password" placeholder="Enter new password..." required>
                 <br>
-                <label for="password">Change Profile avatar:</label>
+                <label for="password">Change Profile picture:</label>
                 <div class="Bigmenu">
                     <div class="quicknav" id="bigzone" style="max-width: 100%;">
                         <label for="image" style="border: rgb(100, 100, 100) 1px solid; width: 100%; padding: 180px 0px 180px 0px;"><input type="file" id="image" name="image" accept="image/jpeg , image/png, image/gif, image/webp" hidden>
                             <img src="assets/Upload.png"> <br>
-                            <span style="font-size: 20px; font-weight:bold">Upload a image here</span>
+                            <span style="font-size: 20px; font-weight:bold">Upload profile picture here</span>
                             <br> <span>Supports jpg, png, gif and webp files up to 100MB</span>
 
                         </label>
                     </div>
                 </div>
                 <input type="submit" class="flexbutton" name="submit" value="Change">
-
             </form>
             <div id="ProfileEnd">
                 <div class="nav"><a href="logout.php">[Log Out]</a></div>
@@ -145,6 +142,8 @@ if (isset($_POST['submit'])) {
 
 
         </div>
+
+
 
 </body>
 
